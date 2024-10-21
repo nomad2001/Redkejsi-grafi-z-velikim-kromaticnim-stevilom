@@ -1,0 +1,198 @@
+\documentclass[mat1, tisk]{fmfdelo}
+% \documentclass[fin1, tisk]{fmfdelo}
+% Če pobrišete možnost tisk, bodo povezave obarvane,
+% na začetku pa ne bo praznih strani po naslovu, …
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% METAPODATKI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% - vaše ime
+\avtor{Matija Kocbek}
+
+% - naslov dela v slovenščini
+\naslov{Redkejši grafi z velikim kromatičnim številom}
+
+% - naslov dela v angleščini
+\title{Sparse graphs with high chromatic number}
+
+% - ime mentorja/mentorice s polnim nazivom:
+%   - doc.~dr.~Ime Priimek
+%   - izr.~prof.~dr.~Ime Priimek
+%   - prof.~dr.~Ime Priimek
+%   za druge variante uporabite ustrezne ukaze
+\mentor{prof.~dr.~Riste Škrekovski}
+% \somentor{...}
+% \mentorica{...}
+% \somentorica{...}
+% \mentorja{...}{...}
+% \somentorja{...}{...}
+% \mentorici{...}{...}
+% \somentorici{...}{...}
+
+% - leto diplome
+\letnica{2025} 
+
+% - povzetek v slovenščini
+%   V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga
+%   organizacije dela, torej v katerem razdelku je kaj, pač pa le opis vsebine.
+\povzetek{...}
+
+% - povzetek v angleščini
+\abstract{...}
+
+% - klasifikacijske oznake, ločene z vejicami
+%   Oznake, ki opisujejo področje dela, so dostopne na strani https://www.ams.org/msc/
+\klasifikacija{..., ...}
+
+% - ključne besede, ki nastopajo v delu, ločene s \sep
+\kljucnebesede{...\sep ...}
+
+% - angleški prevod ključnih besed
+\keywords{...\sep ...} % angleški prevod ključnih besed
+
+% - angleško-slovenski slovar strokovnih izrazov
+\slovar{
+% \geslo{angleški izraz}{slovenski izraz}
+% ...
+}
+
+% - ime datoteke z viri (vključno s končnico .bib), če uporabljate BibTeX
+% \literatura{....bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DODATNE DEFINICIJE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% naložite dodatne pakete, ki jih potrebujete
+% \usepackage{...}
+
+% deklarirajte vse matematične operatorje, da jih bo LaTeX pravilno stavil
+% \DeclareMathOperator{\...}{...}
+
+% vstavite svoje definicije ...
+% \newcommand{\...}{...}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ZAČETEK VSEBINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Uvod}
+Grafi ponazarjajo relacije med različnimi objekti. Ena od ključnih lastnosti za razumevanje grafa je, koliko so vozlišča v njem "soodvisna". 
+Kot eno izmed glavnih mer "soodvisnosti" vozlišč lahko vzamemo kromatično število grafa. 
+
+    \begin{definicija}
+        Naj bo $G = (V, E)$ (neusmerjen) graf. Naj bo $K$ poljubna neprazna množica moči $k$. Tedaj preslikavi $c: V \to K$ pravimo 
+        $k$-barvanje vozlišč grafa $G$. Če sta poljubni sosednji vozlišči v $G$ pobarvani z različnimi barvami, tj. če za sosednji 
+        $u$ in $v$ velja, da je $c(u) \neq c(v)$, potem pravimo, da je takšno $k$-barvanje dobro. Kromatično število $G$ je najmanjše
+        število $k$, za katerega obstaja dobro $k$-barvanje grafa $G$. Označimo ga z $\chi(G)$.
+    \end{definicija}
+
+Tema tega diplomskega dela so grafi, ki imajo veliko ožino tj. velikost najmanjšega cikla. 
+
+    \begin{definicija}
+        Dolžini največjega cikla v grafu $G$ pravimo ožina in jo označimo z $girth(G)$.
+    \end{definicija}
+
+Takšni grafi so lokalno izredno enostavni. Če je ožina grafa $g$, bo podgraf porojen s poljubnih $g - 1$ vozlišč dejansko gozd, ker ne more 
+imeti ciklov. Pokazali pa bomo, da so lahko takšni grafi globalno zelo kompleksni, če za mero kompleksnosti vzamemo kromatično število. 
+Videli bomo, da ima lahko graf s poljubno veliko ožino prav tako poljubno veliko kromatično število. Razvoj razumevanja takšnih grafov 
+bomo predstavili skozi primere.
+
+\section{Grafi brez trikotnikov s poljubno velikim kromatičnim številom}
+Najmanjši možen cikel v grafu je cikel dolžine tri in takšnim ciklom pravimo trikotniki. Če nas zanima, ali lahko graf s poljubno veliko
+ožino ima poljubno veliko kromatično število, moramo začeti na prvem koraku in se vprašati, ali lahko ima sploh graf brez trikotnikov
+poljubno veliko ožino. Pokazali bomo, da lahko, s tem da bomo predstavili nekaj konstrukcij takšnih grafov.
+
+\subsection{Tuttejeva konstrukcija}
+Prvi, ki je pokazal, da obstajajo grafi brez trikotnikov, ki imajo poljubno veliko kromatično število, je bil William Thomas Tutte, ki je
+pisal pod psevdonimom Blanche Descartes. Podal je sledečo induktivno konstrukcijo.
+
+Indukcijo delamo na kromatičnem številu $k$. Začnemo z grafom $G_1$, ki vsebuje samo eno vozlišče. Denimo sedaj, da poznamo graf $G_k$, 
+ki ima $n$ vozlišč. Graf $G_{k+1}$ zgradimo tako, da vzamemo množico $Y$ z $k(n - 1) + 1$ vozlišči in brez kakršnihkoli povezav med njimi. 
+Za vsak $X \subseteq Y$, ki vsebuje $n$ vozlišč vzamemo kopijo grafa $G_k$, ki jo označimo z $G_X$ in povežemo to kopijo z $X$ tako, da je 
+vsako vozlišče iz $X$ povezano z natanko enim vozliščem iz $G_X$. Različnih kopij grafa $G_k$ med seboj ne povezujemo, tj. med nobenima 
+vozliščema iz $G_X in G_{X'}$ ne obstaja povezava, če je $X \neq X'$. S tem smo zgradili $G_{k+1}$.
+
+Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
+
+    \begin{trditev}
+        Graf $G_k$ iz Tuttejeve konstrukcije ne vsebuje trikotnikov in velja $\chi(G_k) = k$.
+    \end{trditev}
+    
+    \begin{dokaz}
+        Dokazujemo z indukcijo. Graf z enim vozliščem ima kromatično število $1$ in je brez trikotnikov, torej je baza indukcije izpoljnena. 
+        Denimo, da trditev za $G_k$ in pokažimo, da velja za $G_{k+1}$.
+
+        Najprej s protislovjem pokažimo, da je $\chi(G_{k+1}) \geq k + 1$. Denimo nasprotno, da je $\chi(G_{k+1}) \leq k$. Tedaj obstaja $c$, 
+        ki je pravilno $k$-barvanje grafa $g_{k+1}$. Recimo, da $G_k$ ima $n$ vozlišč. Tedaj po konstrukciji velja, da ima množica $Y$ iz 
+        konstrukcije $k(n - 1) + 1$ vozlišč, ki so pobarvana pravilno z večjemu $k$ različnimi barvami. Zato mora obstajati vsaj ena barva 
+        $b$, s katero je pobarvanih vsaj $n$ vozlišč iz $Y$. Vzemimo poljubnih $n$ vozlišč iz $Y$ pobarvanih s $b$ in označimo to množico 
+        z $X$. Ker je po indukcijski predpostavki $\chi(G_k) \geq k$, bo $c$ pobarval $G_X$, ki je kopija $G_k$ z natanko $k$ barvami, saj 
+        je $c$ pravilno barvanje. Ker je vsako vozlišče v $X$ povezano z natanko enim v $G_X$ in ker je $c$ pravilno barvanje, je $b$ različna
+        barva od vseh $k$ barv, s katerimi smo pobarvali $G_X$. Torej je $c$ pobarval $G_{k+1}$ z vsaj $k + 1$ barvami, kar pa je protislovje.
+
+        Prav tako je $\chi(G_{k+1}) \leq k + 1$. Po indukcijski predpostavki lahko namreč vsako kopijo $G_k$ pobarvamo s $k$ barvami, saj različne
+        kopije niso med seboj povezane. Tedaj lahko vzamemo poljubno novo barvo, ki je nismo uporabili za kopije $G_k$ in z njo pobarvamo $Y$,
+        saj elementi $Y$ nimajo med seboj povezav. S tem smo dokazali želeno, saj smo dobili pravilno $(k+1)$-barvanje grafa, in je res 
+        $\chi(G_{k+1}) = k + 1$.
+
+        Denimo, da v $G_{k+1}$ obstaja trikotnik. V trikotniku so vsa vozlišča paroma povezana, zato lahko v njem leži kvečjemu eno vozlišče iz $Y$,
+        saj med vozlišči v $Y$ ni povezav. Prav tako preostali dve vozlišči morata ležati v isti kopiji $G_k$, saj nimamo povezav med različnimi kopijami.
+        To pa pomeni, da imamo vozlišče v $Y$, ki je povezano z dvema različnima vozliščema iz iste kopije $G_k$, kar pa je v protislovju s konstrukcijo.
+        Torej $G_{k+1}$ res ne vsebuje trikotnikov.
+
+    \end{dokaz}
+
+    \begin{opomba}
+        Če definiramo $G_k$ le za $k \geq 3$ in za $G_3$ vzamemo cikel dolžine sedem, ob zgornji trditvi velja celo, da je $girth(G_k) \geq 6$ za vsak 
+        $k \geq 3$.
+    \end{opomba}
+
+Tuttejeva konstrukcija torej res dokazuje, da lahko imajo grafi brez trikotnikov poljubno veliko kromatično število. Vendar so grafi v Tuttejevi konstrukciji
+izredno veliki in je v resnici kromatično število precej majhno v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega.
+
+\subsection{Konstrukcija Mycielskega}
+Jan Mycielski je leta 1955 podal konstrukcijo, ki iz začetnega grafa z $n$ vozlišči zgradi graf z $2n + 1$ vozlišči, ki ima večje kromatično število kot
+začetni graf, hkrati pa nima trikotnikov, če jih začetni graf nima. Konstrukcija je podana na naslednji način.
+
+Denimo, da imamo graf $G$ na $n$ vozliščih ${v_1, \ldots, v_n}$. Potem definiramo $M(G)$ kot graf z $2n + 1$ vozlišči ${a_1, \ldots, a_n, b_1, \ldots, b_n, c}$. 
+Za vse $i, j$, za katere obstaja povezava $v_iv_j$ v $G$, tvorimo povezave $a_ia_j, a_ib_j$ in $a_jb_i$ v $M(G)$. Ob tem za vsak $i$ med $1$ in $n$ tvorimo 
+povezavo $b_ic$ v $M(G)$. Takšnemu grafu $M(G)$ pravimo graf Mycielskega grafa $G$.
+
+    \begin{trditev}
+        Če graf $G$ nima trikotnikov, potem nima trikotnikov niti njegov graf Mycielskega $M(G)$.
+    \end{trditev}
+
+    \begin{dokaz}
+        Naj bo $G$ brez trikotnikov. Dokazujemo s protislovjem. Denimo, da ima $M(G)$ nek trikotnik. Vsa vozlišča znotraj trikotnika so med seboj povezana. Ker v $M(G)$ ni povezav med 
+        $b_i$ in $b_j$ za nobena $i$ in $j$, je lahko v ciklu kvečjemu eno vozlišče oblike $b_i$. To pomeni, da mora biti vsaj eno vozlišče oblike $a_i$ v trikotniku.
+        Ker $c$ ni povezan z nobenim vozliščem te oblike, $c$ ne more biti v trikotniku. Torej imamo v trikotniku $a_j$ in $a_k$ za neka različna $j$ in $k$. Če bi imeli v
+        trikotniku še vozlišče $a_i$ za nek $i$ različen od $j$ in $k$, bi to pomenilo, da imamo trikotnik v $G$, saj je podgraf $M(G)$ porojen z vozlišči ${a_1, \ldots, a_n}$
+        izomorfen $G$ po konstrukciji, kar je protislovje. Torej je v trikotniku še vozlišče $b_i$ za nek $i$. To pa po konstrukciji $M(G)$ pomeni, da imamo v $G$ povezave $v_iv_k$, $v_iv_j$
+        in $v_jv_k$, kar je trikotnik. Ker $G$ po predpostavki nima trikotnikov, smo prišli do protislovja.
+    \end{dokaz}
+
+    \begin{trditev}
+        Velja $\chi(M(G)) = \chi(G) + 1$.
+    \end{trditev}
+
+    \begin{dokaz}
+        Pokažimo najprej, da je $\chi(M(G)) \geq \chi(G) + 1$. Dokazujemo s protislovjem. Denimo, da je $\chi(M(G)) \leq \chi(G) = k$. Tedaj obstaja pravilno $k$-barvanje $M(G)$, recimo mu $f$.
+        Brez škode za splošnost je $f(c) = k$. Zaradi pravilnosti $f$, ni nobeno vozlišče oblike $b_i$ pobarvano s $k$. Barvanje $f$ porodi pravilno $k$-barvanje grafa $G$, recimo mu $g$, podano 
+        z $g(v_i) = f(a_i)$. Če je kakšno vozlišče $v_i$ v $G$ pobarvano s $k$, lahko spremenimo barvo v $f(b_i)$ in je barvanje grafa $G$ še vedno pravilno. Namreč, če imamo povezavo $v_iv_j$ v $G$, 
+        imamo tudi povezavo $b_ia_j$ v $M(G)$, kar pomeni, da je $f(b_i) \neq f(a_j) = g(a_j)$ zaradi pravilnosti barvanja $f$. Torej tudi v spremenjenem barvanju nimamo nobenih sosedov z enako barvo,
+        torej je to pravilno barvanje $G$. Vsa vozlišča v $G$, ki so bila pobarvana s $k$, smo na novo pobarvali z neko barvo iz $\{1, \ldots, k-1\}$, ker je $f(b_i) \neq k$ za vse $i$. To pa pomeni,
+        da smo našli pravilno $(k-1)$-barvanje $G$, kar je v protislovju z $\chi(G) = k$.
+        Dokažimo še $\chi(M(G)) \leq \chi(G) + 1$. Naj bo $k = \chi(G)$ in naj bo $g$ pravilno $k$-barvanje grafa $G$. Definiramo potem $f$ kot $(k+1)$-barvanje grafa $M(G)$. Naj bo $f(a_i) = f(b_i) = g(v_i)$
+        za vse $i$. Naj bo $f(c) = k + 1$. Pokažimo, da je $f$ pravilno barvanje. Ker je $f(b_i) \neq k + 1$ za vse $i$, $c$ nima enake barve z nobenim sosedom. Če pa imamo v $M(G)$ povezavo oblike $a_ia_j$ ali 
+        pa $a_ib_j$ za neka različna $i$ in $j$, vemo, da imamo v $G$ povezavo $v_iv_j$. Ker je $f(a_i) = g(v_i) \neq g(v_j) = f(a_j) = f(b_j)$, pri čemer smo upoštevali pravilnost $g$, vemo, da niti sosedi oblike
+        $a_i$ in $a_j$ ali $a_i$ in $b_j$ ne bodo imeli enake barve. Torej je $f$ res pravilno $(k+1)$-barvanje $M(G)$ in je res $\chi(M(G)) = \chi(G) + 1$.
+    \end{dokaz}
+
+% \section{Zaključek}
+% ...
+
+\end{document}
