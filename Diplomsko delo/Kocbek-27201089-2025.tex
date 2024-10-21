@@ -114,7 +114,7 @@ Indukcijo delamo na kromatičnem številu $k$. Začnemo z grafom $G_1$, ki vsebu
 ki ima $n$ vozlišč. Graf $G_{k+1}$ zgradimo tako, da vzamemo množico $Y$ z $k(n - 1) + 1$ vozlišči in brez kakršnihkoli povezav med njimi. 
 Za vsak $X \subseteq Y$, ki vsebuje $n$ vozlišč vzamemo kopijo grafa $G_k$, ki jo označimo z $G_X$ in povežemo to kopijo z $X$ tako, da je 
 vsako vozlišče iz $X$ povezano z natanko enim vozliščem iz $G_X$. Različnih kopij grafa $G_k$ med seboj ne povezujemo, tj. med nobenima 
-vozliščema iz $G_X in G_{X'}$ ne obstaja povezava, če je $X \neq X'$. S tem smo zgradili $G_{k+1}$.
+vozliščema iz $G_X$ in $G_{X'}$ ne obstaja povezava, če je $X \neq X'$. S tem smo zgradili $G_{k+1}$.
 
 Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
 
@@ -152,7 +152,8 @@ Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
     \end{opomba}
 
 Tuttejeva konstrukcija torej res dokazuje, da lahko imajo grafi brez trikotnikov poljubno veliko kromatično število. Vendar so grafi v Tuttejevi konstrukciji
-izredno veliki in je v resnici kromatično število precej majhno v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega.
+izredno veliki (če ima $G_k$ recimo $n$ vozlišč, ima $G_{k+1}$ potem $\binom{k(n-1)+1}{n}n + k(n-1) + 1$ vozlišč) in je v resnici kromatično število zelo majhno 
+v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega.
 
 \subsection{Konstrukcija Mycielskega}
 Jan Mycielski je leta 1955 podal konstrukcijo, ki iz začetnega grafa z $n$ vozlišči zgradi graf z $2n + 1$ vozlišči, ki ima večje kromatično število kot
@@ -191,6 +192,39 @@ povezavo $b_ic$ v $M(G)$. Takšnemu grafu $M(G)$ pravimo graf Mycielskega grafa 
         pa $a_ib_j$ za neka različna $i$ in $j$, vemo, da imamo v $G$ povezavo $v_iv_j$. Ker je $f(a_i) = g(v_i) \neq g(v_j) = f(a_j) = f(b_j)$, pri čemer smo upoštevali pravilnost $g$, vemo, da niti sosedi oblike
         $a_i$ in $a_j$ ali $a_i$ in $b_j$ ne bodo imeli enake barve. Torej je $f$ res pravilno $(k+1)$-barvanje $M(G)$ in je res $\chi(M(G)) = \chi(G) + 1$.
     \end{dokaz}
+
+    \begin{posledica}
+        Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
+    \end{posledica}
+
+    \begin{dokaz}
+        Dokažemo z indukcijo. $G_3$ je cikel lihe dolžine, torej ima kromatično število $3$, in nima trikotnikov, saj cikel dolžine $3$. Baza indukcije je s tem izpolnjena. Indukcijski korak dokažemo enostavno 
+        s prejšnjima trditvama.
+    \end{dokaz}
+
+Konstrukcija Mycielskega nam torej porodi še eno družino grafov brez trikotnikov, katerih kromatično število neomejeno narašča. Grafi iz te družine so dosti manjši kot grafi iz Tuttejeve konstrukcije,
+in sicer bi z indukcijo lahko enostavno dokazali, da je število vozlišč v $G_k$ enako $3 \cdot 2^{k-2} - 1$ za $k \geq 3$. Torej kromatično število narašča logaritemsko glede na število vozlišč. To je še vedno dosti
+majhno, vendar veliko boljše kot v Tuttejevi konstrukciji.
+
+\subsection{Zamični grafi}
+
+\subsection{Ramseyjevi grafi}
+Vsi grafi iz prejšnjih podrazdelkov so dejansko imeli precej majhna kromatična števila glede na velikosti grafov. V tem podrazdelku pa bomo obravnavali grafe z dosti večjim kromatičnim številom,
+torej globalno dosti bolj kompleksne grafe.
+
+Graf $G_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+da $p$ leži na $L$. Vozlišča opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $(p, L) < (p', L')$, da sta $p$ in $p'$ različni ter $L$ in $L'$
+različni in da $p$ leži na $L'$. Tedaj velja, da $G_k$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq k + 1$. Ker ima graf $(k^2 + k + 1)(k + 1)$ vozlišč, je posledično $\chi(G_k) \geq k^2 + k + 1$.
+Če ima $G_k$ $n$ vozlišč, je torej $\chi(G_k) = \Omega(n^{\frac{2}{3}})$, kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
+kljub odsotnosti trikotnikov.
+
+TU JE TREBA ŠE VELIKO DODELATI!!!!!!!!!!!!!
+
+\section{Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}
+V prejšnjem razdelku smo pokazali, da odsotnost trikotnikov ne omejuje kromatičnega števila grafa. Prav tako smo poskušali ugotoviti, kako globalno kompleksen je lahko graf, ki nima trikotnikov, torej graf,
+ki je lokalno na poljubnih treh vozliščih izredno enostaven. V tem razdelku bomo najprej pokazali, da ožina sama po sebi ne more omejiti kromatičnega števila, tj. da za poljubno veliko fiksno ožino vedno obstaja
+graf s poljubno velikim kromatičnim številom. Nato pa bomo poskusili analizirati, kako skupaj velikost grafa in njegova ožina omejujeta kromatično število. Pogledali bomo, koliko kompleksen je lahko nek graf globalno 
+v odvisnosti od tega, koliko enostaven je lokalno.
 
 % \section{Zaključek}
 % ...
