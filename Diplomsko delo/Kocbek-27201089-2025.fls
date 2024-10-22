@@ -1004,11 +1004,11 @@ INPUT .\Kocbek-27201089-2025.out
 INPUT .\Kocbek-27201089-2025.out
 INPUT Kocbek-27201089-2025.run.xml
 OUTPUT Kocbek-27201089-2025.run.xml
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
-INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmcsc10.pfb
@@ -1017,6 +1017,8 @@ INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi6.pfb
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi6.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi8.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi8.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr12.pfb

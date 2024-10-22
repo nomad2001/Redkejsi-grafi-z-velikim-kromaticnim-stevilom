@@ -148,12 +148,13 @@ Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
 
     \begin{opomba}
         Če definiramo $G_k$ le za $k \geq 3$ in za $G_3$ vzamemo cikel dolžine sedem, ob zgornji trditvi velja celo, da je $girth(G_k) \geq 6$ za vsak 
-        $k \geq 3$.
+        $k \geq 3$. DOKAŽI TO!!!!!!!!!
     \end{opomba}
 
 Tuttejeva konstrukcija torej res dokazuje, da lahko imajo grafi brez trikotnikov poljubno veliko kromatično število. Vendar so grafi v Tuttejevi konstrukciji
 izredno veliki (če ima $G_k$ recimo $n$ vozlišč, ima $G_{k+1}$ potem $\binom{k(n-1)+1}{n}n + k(n-1) + 1$ vozlišč) in je v resnici kromatično število zelo majhno 
-v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega.
+v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega. Glavna prednost Tuttejeve konstrukcije je ta, da dokazuje, da lahko imajo 
+tudi grafi brez ciklov dolžine manjše ali enake $4$ ali $5$ poljubno velika kromatična števila.
 
 \subsection{Konstrukcija Mycielskega}
 Jan Mycielski je leta 1955 podal konstrukcijo, ki iz začetnega grafa z $n$ vozlišči zgradi graf z $2n + 1$ vozlišči, ki ima večje kromatično število kot
@@ -212,11 +213,14 @@ majhno, vendar veliko boljše kot v Tuttejevi konstrukciji.
 Vsi grafi iz prejšnjih podrazdelkov so dejansko imeli precej majhna kromatična števila glede na velikosti grafov. V tem podrazdelku pa bomo obravnavali grafe z dosti večjim kromatičnim številom,
 torej globalno dosti bolj kompleksne grafe.
 
-Graf $G_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+Graf $G_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
 da $p$ leži na $L$. Vozlišča opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $(p, L) < (p', L')$, da sta $p$ in $p'$ različni ter $L$ in $L'$
-različni in da $p$ leži na $L'$. Tedaj velja, da $G_k$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq k + 1$. Ker ima graf $(k^2 + k + 1)(k + 1)$ vozlišč, je posledično $\chi(G_k) \geq k^2 + k + 1$.
-Če ima $G_k$ $n$ vozlišč, je torej $\chi(G_k) = \Omega(n^{\frac{2}{3}})$, kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
+različni in da $p$ leži na $L'$. Tedaj velja, da $G_k$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq 2 \cdot (k^2 + k + 1)$. Ker ima graf $(k^2 + k + 1)(k + 1)$ vozlišč, je posledično $\chi(G_k) \geq k + 1$.
+Če ima $G_k$ $n$ vozlišč, je torej $\chi(G_k) = \Omega(n^{\frac{1}{3}})$, kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
 kljub odsotnosti trikotnikov.
+
+To je dejansko zelo blizu največjemu kromatičnemu številu, ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G$ velja namreč meja $\chi(G) \leq 2\sqrt{n} + 1$ (lažji dokaz na
+Mathematics stack exchange). Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
 
 TU JE TREBA ŠE VELIKO DODELATI!!!!!!!!!!!!!
 
@@ -225,6 +229,32 @@ V prejšnjem razdelku smo pokazali, da odsotnost trikotnikov ne omejuje kromati�
 ki je lokalno na poljubnih treh vozliščih izredno enostaven. V tem razdelku bomo najprej pokazali, da ožina sama po sebi ne more omejiti kromatičnega števila, tj. da za poljubno veliko fiksno ožino vedno obstaja
 graf s poljubno velikim kromatičnim številom. Nato pa bomo poskusili analizirati, kako skupaj velikost grafa in njegova ožina omejujeta kromatično število. Pogledali bomo, koliko kompleksen je lahko nek graf globalno 
 v odvisnosti od tega, koliko enostaven je lokalno.
+
+S pomočjo naslednje trditve bomo dokazali, da za poljubno veliko fiksno ožino grafa, obstaja družina grafov s to ožino in neomejenim kromatičnim številom.
+
+    \begin{trditev}
+        Naj bo $h(k, l)$ najmanjše število, za katero vsak graf z $h(k, l)$ vozlišči vsebuje cikel dolžine kvečjemu $k$ ali množico $l$ neodvisnih vozlišč. Tedaj za fiksni $k$ in dovolj velik $l$ velja $h(k, l) > l^{1+\frac{1}{k}}$.
+    \end{trditev}
+
+    PRED TEM JE ŠE TREBA DOKAZATI DA $h(k, l)$ OBSTAJA IN DEFINIRATI NEODVISNO MNOŽICO.
+
+    \begin{dokaz}
+        Naj bo $n$ veliko število. Naj bo $0 < \epsilon < \frac{1}{k}$ poljuben. Naj bo $m = \lfloor n^{1+\epsilon} \rfloor$ in $p = \lfloor n^{1-\eta} \rfloor$, kjer je $0 < \eta < \frac{\epsilon}{2}$ poljuben.
+        Naj bo $G^{(n)}$ poln graf z $n$ vozlišči $x_1, \ldots, x_n$ in $G^{(p)}$ njegov poljuben poln podgraf s $p$ vozlišči. Očitno je, da lahko $G^{(p)}$ izberemo na $\binom{n}{p}$ načinov. Naj bodo $G_{\alpha}^{(n)}$ podgrafi
+        $G^{(n)}$, ki vsebujejo $m$ povezav, pri čemer je $1 \leq \alpha \leq \binom{\binom{n}{2}}{m}$, saj imamo toliko podgrafov z $m$ povezavami.
+
+        Najprej bomo pokazali, da je kvečjemu $o(\binom{\binom{n}{2}}{m})$ podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$. Podgrafe, ki delijo natanko $l$ povezav z $G^{(p)}$, dobimo tako, da izberemo $l$ povezav v $G^{(p)}$ in 
+        $m - l$ povezav izven $G^{(p)}$. To lahko naredimo na $\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}$ načinov. Podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$, je torej
+        
+        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}.$$
+
+        Ker je $\eta < \frac{\epsilon}{2} < \frac{1}{2k} \leq \frac{1}{2}$, je $1 - \eta > \frac{1}{2}$ in s tem je $p = \omega(n^{\frac{1}{2}})$. Posledično je $\binom{p}{2} = \omega(n)$, kar pomeni, da za dovolj velike
+        $n$ velja $2n < \binom{p}{2}$. Posledično za dovolj velike $n$ velja $\binom{\binom{p}{2}}{l} < \binom{\binom{p}{2}}{n}$ za vse $l \leq n$. Prav tako velja $1 + \epsilon < 1 + \frac{1}{k} \leq 2$ in s tem $m = o(n^2)$.
+        Ker je $p = o(n)$, velja, da je $\binom{n}{2}-\binom{p}{2} = \Theta(n^2)$, torej je $\binom{n}{2}-\binom{p}{2} = \omega(m)$. Po podobnem razmisleku kot prej izpeljemo, da zato za dovolj velike $n$ velja
+        $\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < \binom{\binom{n}{2}-\binom{p}{2}}{m}$ za vse $l \leq n$. Posledično za dovolj velik $n$ velja
+
+        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < (n + 1)\binom{\binom{p}{2}}{n}\binom{\binom{n}{2}-\binom{p}{2}}{m}.$$
+    \end{dokaz}
 
 % \section{Zaključek}
 % ...
