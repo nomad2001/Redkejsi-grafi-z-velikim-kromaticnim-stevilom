@@ -7,7 +7,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Tuttejeva konstrukcija}{7}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Konstrukcija Mycielskega}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Konstrukcija Mycielskega}{9}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Zamični grafi}{10}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
