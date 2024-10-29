@@ -999,6 +999,8 @@ OUTPUT Kocbek-27201089-2025.toc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmcsc10.tfm
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri12.tfm
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
 INPUT Kocbek-27201089-2025.aux
 INPUT .\Kocbek-27201089-2025.out
 INPUT .\Kocbek-27201089-2025.out
@@ -1035,3 +1037,5 @@ INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy6.p
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy6.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy8.pfb
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy8.pfb
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

@@ -234,31 +234,66 @@ ki je lokalno na poljubnih treh vozliščih izredno enostaven. V tem razdelku bo
 graf s poljubno velikim kromatičnim številom. Nato pa bomo poskusili analizirati, kako skupaj velikost grafa in njegova ožina omejujeta kromatično število. Pogledali bomo, koliko kompleksen je lahko nek graf globalno 
 v odvisnosti od tega, koliko enostaven je lokalno.
 
-S pomočjo naslednje trditve bomo dokazali, da za poljubno veliko fiksno ožino grafa, obstaja družina grafov s to ožino in neomejenim kromatičnim številom.
+Najprej definiramo pojem naključnega grafa:
 
-    \begin{trditev}
-        Naj bo $h(k, l)$ najmanjše število, za katero vsak graf z $h(k, l)$ vozlišči vsebuje cikel dolžine kvečjemu $k$ ali množico $l$ neodvisnih vozlišč. Tedaj za fiksni $k$ in dovolj velik $l$ velja $h(k, l) > l^{1+\frac{1}{k}}$.
-    \end{trditev}
+    \begin{definicija}
+        Verjetnostni prostor slučajnih grafov $G(n, p)$ je podan z množico vseh grafov na $n$ vozliščih kot množico elementarnih izidov, dogodek je poljubna množica grafov na $n$ vozliščih, verjetnost vsakega grafa $G$
+        z $m$ povezavami pa je enaka $P(G) = p^m(1 - p)^{\binom{n}{2}-m}$.
+    \end{definicija}
 
-    PRED TEM JE ŠE TREBA DOKAZATI DA $h(k, l)$ OBSTAJA IN DEFINIRATI NEODVISNO MNOŽICO.
+    \begin{opomba}
+        Verjetnost posameznega grafa v prostoru slučajnih grafov lahko interpretiramo tako, da za vsako posamezno povezavo neodvisno izbiramo, ali je vsebovana v grafu, in $p$ je verjetnost, da je posamezna povezava vsebovana v grafu.
+    \end{opomba}
+
+Naslednja lema je pomembna za dokaz glavnega izreka:
+
+    \begin{lema}
+        Naj bo slučajna spremenljivka $X : G(n, p) \to \mathbb{R}$ število $k$-ciklov v $G = (V, E) \in G(n, p)$. Potem je:
+
+        $$E(X) = \frac{n^{\underline{k}}}{2k}p^k,$$
+
+        kjer je $n^{\underline{k}} = n(n-1)\ldots(n-k+1)$.
+    \end{lema}
 
     \begin{dokaz}
-        Naj bo $n$ veliko število. Naj bo $0 < \epsilon < \frac{1}{k}$ poljuben. Naj bo $m = \lfloor n^{1+\epsilon} \rfloor$ in $p = \lfloor n^{1-\eta} \rfloor$, kjer je $0 < \eta < \frac{\epsilon}{2}$ poljuben.
-        Naj bo $G^{(n)}$ poln graf z $n$ vozlišči $x_1, \ldots, x_n$ in $G^{(p)}$ njegov poljuben poln podgraf s $p$ vozlišči. Očitno je, da lahko $G^{(p)}$ izberemo na $\binom{n}{p}$ načinov. Naj bodo $G_{\alpha}^{(n)}$ podgrafi
-        $G^{(n)}$, ki vsebujejo $m$ povezav, pri čemer je $1 \leq \alpha \leq \binom{\binom{n}{2}}{m}$, saj imamo toliko podgrafov z $m$ povezavami.
+        Preštejmo število ciklov dolžine $k$ v polnem grafu na $n = |V|$ vozliščih. Pomagamo si z zaporedji vozlišč $C = v_1,v_2,\ldots,v_k$. Število zaporedij z različnimi elementi dolžine $k$ na $n$-elementni množici je $n^{\underline{k}}$, vsak cikel
+        pa ustreza $2k$ takšnim zaporedjem, saj cikel porodi $k$ možnih začetnih točk zaporedji in imamo dve možni smeri premikanja po ciklu. Število možnih ciklov je torej $\frac{n^{\underline{k}}}{2k}$. Za vsak cikel $C_i$, $1 \leq i \leq \frac{n^{\underline{k}}}{2k}$,
+        definiramo indikatorsko slučajno spremenljivko $X_i$:
 
-        Najprej bomo pokazali, da je kvečjemu $o(\binom{\binom{n}{2}}{m})$ podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$. Podgrafe, ki delijo natanko $l$ povezav z $G^{(p)}$, dobimo tako, da izberemo $l$ povezav v $G^{(p)}$ in 
-        $m - l$ povezav izven $G^{(p)}$. To lahko naredimo na $\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}$ načinov. Podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$, je torej
-        
-        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}.$$
+        $$X_i = \begin{cases}
+            1, & C_i \subseteq G \\
+            0, & \text{sicer}
+        \end{cases}.$$
 
-        Ker je $\eta < \frac{\epsilon}{2} < \frac{1}{2k} \leq \frac{1}{2}$, je $1 - \eta > \frac{1}{2}$ in s tem je $p = \omega(n^{\frac{1}{2}})$. Posledično je $\binom{p}{2} = \omega(n)$, kar pomeni, da za dovolj velike
-        $n$ velja $2n < \binom{p}{2}$. Posledično za dovolj velike $n$ velja $\binom{\binom{p}{2}}{l} < \binom{\binom{p}{2}}{n}$ za vse $l \leq n$. Prav tako velja $1 + \epsilon < 1 + \frac{1}{k} \leq 2$ in s tem $m = o(n^2)$.
-        Ker je $p = o(n)$, velja, da je $\binom{n}{2}-\binom{p}{2} = \Theta(n^2)$, torej je $\binom{n}{2}-\binom{p}{2} = \omega(m)$. Po podobnem razmisleku kot prej izpeljemo, da zato za dovolj velike $n$ velja
-        $\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < \binom{\binom{n}{2}-\binom{p}{2}}{m}$ za vse $l \leq n$. Posledično za dovolj velik $n$ velja
+        Velja $E[X_i] = P(X_i = 1) = p^k$, saj je po zgornji opombi to verjetnost, da je vseh $k$ povezav iz $C_i$ vsebovanih v $G$. Prav tako velja, da je $X = \sum_{i=1}^{\frac{n^{\underline{k}}}{2k}}X_i$, saj oba izraza preštejeta vse cikle dolžine $k$
+        v grafu $G$. Torej po linearnosti pričakovane vrednosti velja:
 
-        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < (n + 1)\binom{\binom{p}{2}}{n}\binom{\binom{n}{2}-\binom{p}{2}}{m}.$$
+        $$E[X] = E[\sum_{i=1}^{\frac{n^{\underline{k}}}{2k}}X_i] = \sum_{i=1}^{\frac{n^{\underline{k}}}{2k}}E[X_i] = \sum_{i=1}^{\frac{n^{\underline{k}}}{2k}}p^k = \frac{n^{\underline{k}}}{2k}p^k.$$
     \end{dokaz}
+
+%    \begin{trditev}
+%        Naj bo $h(k, l)$ najmanjše število, za katero vsak graf z $h(k, l)$ vozlišči vsebuje cikel dolžine kvečjemu $k$ ali množico $l$ neodvisnih vozlišč. Tedaj za fiksni $k$ in dovolj velik $l$ velja $h(k, l) > l^{1+\frac{1}{k}}$.
+%    \end{trditev}
+
+%    PRED TEM JE ŠE TREBA DOKAZATI DA $h(k, l)$ OBSTAJA IN DEFINIRATI NEODVISNO MNOŽICO.
+
+%    \begin{dokaz}
+%        Naj bo $n$ veliko število. Naj bo $0 < \epsilon < \frac{1}{k}$ poljuben. Naj bo $m = \lfloor n^{1+\epsilon} \rfloor$ in $p = \lfloor n^{1-\eta} \rfloor$, kjer je $0 < \eta < \frac{\epsilon}{2}$ poljuben.
+%        Naj bo $G^{(n)}$ poln graf z $n$ vozlišči $x_1, \ldots, x_n$ in $G^{(p)}$ njegov poljuben poln podgraf s $p$ vozlišči. Očitno je, da lahko $G^{(p)}$ izberemo na $\binom{n}{p}$ načinov. Naj bodo $G_{\alpha}^{(n)}$ podgrafi
+%        $G^{(n)}$, ki vsebujejo $m$ povezav, pri čemer je $1 \leq \alpha \leq \binom{\binom{n}{2}}{m}$, saj imamo toliko podgrafov z $m$ povezavami.
+
+%        Najprej bomo pokazali, da je kvečjemu $o(\binom{\binom{n}{2}}{m})$ podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$. Podgrafe, ki delijo natanko $l$ povezav z $G^{(p)}$, dobimo tako, da izberemo $l$ povezav v $G^{(p)}$ in 
+%        $m - l$ povezav izven $G^{(p)}$. To lahko naredimo na $\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}$ načinov. Podgrafov $G_{\alpha}^{(n)}$, ki delijo največ $n$ povezav z $G^{(p)}$, je torej
+        
+%        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l}.$$
+
+%        Ker je $\eta < \frac{\epsilon}{2} < \frac{1}{2k} \leq \frac{1}{2}$, je $1 - \eta > \frac{1}{2}$ in s tem je $p = \omega(n^{\frac{1}{2}})$. Posledično je $\binom{p}{2} = \omega(n)$, kar pomeni, da za dovolj velike
+%        $n$ velja $2n < \binom{p}{2}$. Posledično za dovolj velike $n$ velja $\binom{\binom{p}{2}}{l} < \binom{\binom{p}{2}}{n}$ za vse $l \leq n$. Prav tako velja $1 + \epsilon < 1 + \frac{1}{k} \leq 2$ in s tem $m = o(n^2)$.
+%        Ker je $p = o(n)$, velja, da je $\binom{n}{2}-\binom{p}{2} = \Theta(n^2)$, torej je $\binom{n}{2}-\binom{p}{2} = \omega(m)$. Po podobnem razmisleku kot prej izpeljemo, da zato za dovolj velike $n$ velja
+%        $\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < \binom{\binom{n}{2}-\binom{p}{2}}{m}$ za vse $l \leq n$. Posledično za dovolj velik $n$ velja
+
+%        $$\sum_{l=0}^{n}\binom{\binom{p}{2}}{l}\binom{\binom{n}{2}-\binom{p}{2}}{m-l} < (n + 1)\binom{\binom{p}{2}}{n}\binom{\binom{n}{2}-\binom{p}{2}}{m}.$$
+%    \end{dokaz}
 
 % \section{Zaključek}
 % ...
