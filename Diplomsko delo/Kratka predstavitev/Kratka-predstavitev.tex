@@ -1,0 +1,171 @@
+\documentclass[t]{beamer} % [t] pomeni poravnavo na vrh slida
+
+% \usepackage{etex} % vključi ta paket, če ti javi napako, da imaš naloženih preveč paketov.
+
+% standardni paketi
+\usepackage[slovene]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{varwidth}
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{bbold} % alternative blackboard letters (amssymb already provides a set of them)
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{mathpartir} % inference rules
+\usepackage{stmaryrd}
+\usepackage{mathtools} % to typeset equations in the appendix
+\usepackage{xcolor}
+\usepackage[all]{xy}
+
+% paket, ki ga rabimo za risanje
+\usepackage{tikz}
+
+\usepackage{lmodern}                            % to get rid of font warnings
+\renewcommand\textbullet{\ensuremath{\bullet}}  % to get rid of font warnings
+
+\input{macros.tex}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\definecolor{keywordColor}{rgb}{0.0,0.0,0.5} % the color of language keywords
+\definecolor{rulenameColor}{rgb}{0.5,0.5,0.5} % the color of rule names
+
+% podatki
+\title{Redkejši grafi z velikim kromatičnim številom}
+\author{Matija Kocbek}
+\institute{mentor: prof.~dr.~Riste Škrekovski}
+\date{2.\;december 2024}
+
+% tvoj izbran stil predstavitve
+\usetheme{Singapore}
+\usecolortheme{crane}
+\newtheorem{definicija}{Definicija}
+\newtheorem{trditev}{Trditev}
+\newtheorem{izrek}{Izrek}
+
+% \setbeamertemplate{footline}{}            % pri nekaterih temah je potrebno odstraniti
+% \setbeamertemplate{navigation symbols}{}  % nogo, v tem primeru to odkomentiraj
+
+%  ukaz za počrnitev enega slida. Nariše črn pravokotnik višine #1 na dno.
+\newcommand{\fillblack}[1]{
+\begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(0 cm,0cm)}]  at (current page.south west)
+        {%
+        \begin{tikzpicture}[remember picture, overlay] at (current page.south west)
+            \draw [fill=black] (0, 0) -- (0,#1 \paperheight) --
+                              (\paperwidth,#1 \paperheight) -- (\paperwidth,0) -- cycle ;
+        \end{tikzpicture}
+        };
+        \draw (current page.north west) rectangle (current page.south east);
+\end{tikzpicture}
+}
+
+% Projektor, ki sveti na tablo je zoprn, ker zavzema prostor za pisanje.
+% Praktična rešitev je, da se platno spusti samo do table, spodnji del
+% predstavitve pa naredimo popolnoma črn. Tako projektor na tablo ne projecira
+% svetlobe in je pisanje nemoteno s strani predstavitve, ki je cela nad tablo.
+
+% Za to da dobite spodaj zatemnjen slide, je potrebno na konec frame-a dodati
+% ukaz \fillblack{delež}, kjer je delež številka med 0 in 1, ki pove, kakšen
+% delež slida želite imeti zapolnjen s črnim pravokotnikom. Spodaj so 4 slidi,
+% ki imajo začrnjenih: 33%, 50%, 33% in 20%.  Za šolske table v 2.02 in 2.03 je
+% 33% ravno prav, da lahko pišete po celi tabli.
+
+% Črni pravokotnik ne zavzema prostora na slidu -- preprosto nariše se čez
+% spodnjo tretjino (ali kolikor pač želite). To pomeni, da se pokrijve tudi ves
+% tekst spodaj. Za to je na začetku dokumenta tudi nastavljena vertikalna
+% poravnava na ``zgoraj'', z razliko od običajne sredinske (to je tisti [t]).
+% Tako se ves tekst obdrži na vidnem delu slida, dokler je to možno. Tretji
+% slide spodaj demonstrira, kaj se zgodi v primeru preveč besedila.
+
+% Kod demonstrira zadnji slide, je vseeno, kjer napišemo ukaz, toda ponavadi ga
+% napišemo na dnu, da se izognemo morebitnim nevšečnostim ali neželenemu
+% spacingu. Pri nekaterih temah se izriše tudi noga, ki se izriše na koncu
+% slida, torej po tem ko je naš pravokotnik že narisan, kar zna biti moteče.
+% To se na primer zgodi tudi pri standardni temi Warsaw. Rešitev je, da nogo
+% odstranimo (saj bi bila itak prekrita). V preambuli so zakomentirani ukazi,
+% kako to naredimo.
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+  %\fillblack{0.25}
+\end{frame}
+
+\begin{frame}[fragile]{Kromatično in neodvisnostno število}
+  %\fillblack{0.33}
+  \begin{definicija}
+    Naj bo $G = (V, E)$ neusmerjen graf. Pravilno $k$-barvanje grafa $G$ je preslikava $c: V \to {1, \ldots, k}$, za katero velja $u \sim v \implies c(u) \neq c(v)$
+    oziroma $c$ ne pobarvna nobeni sosednji vozlišči enako. Najmanjšemu $k$, za katero obstaja pravilno $k$-barvanje $G$ pravimo kromatično število grafa $G$ in ga
+    označimo s $\chi(G)$.
+  \end{definicija}
+  \pause
+  \begin{definicija}
+    Naj bo $G = (V, E)$ in $H \subseteq V$. Če nobeni dve vozlišči iz $H$ nista med seboj povezani, pravimo, da je $H$ neodvisna množica. Velikost neodvisne množice
+    z največjo močjo imenujemo neodvisnostno število grafa $G$ in ga označimo z $\mu(G)$.
+  \end{definicija}
+\end{frame}
+
+\begin{frame}[fragile]{Interpretacija kromatičnega števila}
+  %\fillblack{0.33}
+  Kromatično in neodvisnostno število sta meri "konfliktnosti" grafa. Kromatično število nam pove, kako težko je razbiti graf na popolnoma nekonfliktne množice.
+  Pomembno je, ko je vsaka povezava "problematična".
+  \pause
+  \begin{trditev}
+    Za vsak graf $G$ z $n$ vozlišči je $\chi(G)\mu(G) \geq n$.
+  \end{trditev}
+\end{frame}
+
+\begin{frame}[fragile]{Kromatično število grafov brez trikotnikov}
+  %\fillblack{0.33}
+  Zakaj nas zanima kromatično (in tudi neodvisnostno) število grafov brez trikotnikov?
+  \pause
+  \begin{itemize}
+    \item Ali obstaja graf brez trikotnikov, ki ni dvodelen? \pause
+    \item Kolikšen delež grafov brez trikotnikov je dvodelen ali skoraj dvodelen? \pause
+    \item Kako močno lokalna struktura grafa vpliva na globalno strukturo? \pause
+    \item Določanje Ramseyjevega števila $R(3,t)$. \pause
+    \item Kako zgraditi globalno najbolj možno konfliktna omrežja, ki so lokalno neodvisna, tj. popolnoma nekonfliktna? Koristno za decentralizirane sisteme (npr. "blockchain"),
+          simuliranje evolucijskih procesov...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Odgovori}
+  \begin{trditev}[Mycielski]
+    Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$, kjer z $M(G)$ označimo graf Mycielskega grafa $G$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
+  \end{trditev}
+  \pause
+  \begin{trditev}
+    Naj bo $T_n$ število grafov na $n$ vozliščih brez trikotnikov, $S_n$ pa število dvodelnih grafov na $n$ vozliščih. Tedaj je $T_n = S_n(1 + o(\frac{1}{n}))$.
+  \end{trditev}
+\end{frame}
+
+\begin{frame}{Odgovori}
+  \begin{trditev}
+    Imejmo končno projektivno ravnino s $k^2 + k + 1$ točkami. Zgradimo graf $G$ tako, da za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+    da $p$ leži na $L$. Vozlišča opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $(p, L) < (p', L')$, da sta $p$ in $p'$ različni ter $L$ in $L'$
+    različni in da $p$ leži na $L'$. Tedaj velja, da $G$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq 2 \cdot (k^2 + k + 1)$ ter $\chi(G_k) \geq \frac{k + 1}{2}$.
+  \end{trditev}
+  \pause
+  \begin{trditev}
+    Za vsak graf $G$ brez trikotnikov velja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$.
+  \end{trditev}
+\end{frame}
+
+\begin{frame}{Kromatično število grafov z veliko ožino}
+  \begin{izrek}[Erdos]
+    Za vsaka $k$ in $l$ obstaja graf $G$, da je $\chi(G) \geq k$ in $girth(G) > l$.
+  \end{izrek}
+\end{frame}
+
+\end{document}
