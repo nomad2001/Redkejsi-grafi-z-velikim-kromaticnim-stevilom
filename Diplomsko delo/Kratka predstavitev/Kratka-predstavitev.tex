@@ -106,63 +106,64 @@
   %\fillblack{0.33}
   \begin{definicija}
     Naj bo $G = (V, E)$ neusmerjen graf. Pravilno $k$-barvanje grafa $G$ je preslikava $c: V \to {1, \ldots, k}$, za katero velja $u \sim v \implies c(u) \neq c(v)$
-    oziroma $c$ ne pobarvna nobeni sosednji vozlišči enako. Najmanjšemu $k$, za katero obstaja pravilno $k$-barvanje $G$ pravimo kromatično število grafa $G$ in ga
+    oziroma $c$ ne pobarva nobeni sosednji vozlišči enako. Najmanjšemu $k$, za katero obstaja pravilno $k$-barvanje $G$ pravimo kromatično število grafa $G$ in ga
     označimo s $\chi(G)$.
   \end{definicija}
   \pause
   \begin{definicija}
     Naj bo $G = (V, E)$ in $H \subseteq V$. Če nobeni dve vozlišči iz $H$ nista med seboj povezani, pravimo, da je $H$ neodvisna množica. Velikost neodvisne množice
-    z največjo močjo imenujemo neodvisnostno število grafa $G$ in ga označimo z $\mu(G)$.
+    z največjo močjo imenujemo neodvisnostno število grafa $G$ in ga označimo z $\alpha(G)$.
   \end{definicija}
 \end{frame}
 
-\begin{frame}[fragile]{Interpretacija kromatičnega števila}
-  %\fillblack{0.33}
-  Kromatično in neodvisnostno število sta meri "konfliktnosti" grafa. Kromatično število nam pove, kako težko je razbiti graf na popolnoma nekonfliktne množice.
-  Pomembno je, ko je vsaka povezava "problematična".
-  \pause
+\begin{frame}{Kromatično in neodvisnostno število}
   \begin{trditev}
-    Za vsak graf $G$ z $n$ vozlišči je $\chi(G)\mu(G) \geq n$.
+    Za vsak graf $G$ na $n$ vozliščih velja $\alpha(G)\chi(G) >= n$.
   \end{trditev}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Petersen_graph_3-coloring.svg.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Kromatično število grafov brez trikotnikov}
   %\fillblack{0.33}
-  Zakaj nas zanima kromatično (in tudi neodvisnostno) število grafov brez trikotnikov?
+  Zakaj nas zanima kromatično (in tudi neodvisnostno) število grafov brez trikotnikov? Preučujemo, kako odsotnost trikotnikov vpliva na globalne lastnosti grafa.
   \pause
   \begin{itemize}
-    \item Ali obstaja graf brez trikotnikov, ki ni dvodelen? \pause
     \item Kolikšen delež grafov brez trikotnikov je dvodelen ali skoraj dvodelen? \pause
-    \item Kako močno lokalna struktura grafa vpliva na globalno strukturo? \pause
-    \item Določanje Ramseyjevega števila $R(3,t)$. \pause
-    \item Kako zgraditi globalno najbolj možno konfliktna omrežja, ki so lokalno neodvisna, tj. popolnoma nekonfliktna? Koristno za decentralizirane sisteme (npr. "blockchain"),
-          simuliranje evolucijskih procesov...
+    \item Ali je kromatično število grafov brez trikotnikov omejeno z neko konstanto? \pause
+    \item Kako zgraditi graf z globalno čim večjim kromatičnim številom, ki je lokalno neodvisen, tj. ima minimalno kromatično število?
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Odgovori}
-  \begin{trditev}[Mycielski]
-    Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$, kjer z $M(G)$ označimo graf Mycielskega grafa $G$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
+  \begin{trditev}
+    Naj bo $T_n$ število grafov brez trikotnikov z vozlišči $\{1, \ldots, n\}$, $S_n$ pa število dvodelnih grafov z vozlišči $\{1, \ldots, n\}$. Tedaj je $T_n = S_n(1 + o(\frac{1}{n}))$.
   \end{trditev}
   \pause
-  \begin{trditev}
-    Naj bo $T_n$ število grafov na $n$ vozliščih brez trikotnikov, $S_n$ pa število dvodelnih grafov na $n$ vozliščih. Tedaj je $T_n = S_n(1 + o(\frac{1}{n}))$.
+  \begin{trditev}[Mycielski]
+    Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$, kjer z $M(G)$ označimo graf Mycielskega grafa $G$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
   \end{trditev}
 \end{frame}
 
 \begin{frame}{Odgovori}
   \begin{trditev}
-    Imejmo končno projektivno ravnino s $k^2 + k + 1$ točkami. Zgradimo graf $G$ tako, da za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+    Imejmo končno projektivno ravnino s $k^2 + k + 1$ točkami. Zgradimo graf $G_k$ tako, da za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
     da $p$ leži na $L$. Vozlišča opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $(p, L) < (p', L')$, da sta $p$ in $p'$ različni ter $L$ in $L'$
     različni in da $p$ leži na $L'$. Tedaj velja, da $G$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq 2 \cdot (k^2 + k + 1)$ ter $\chi(G_k) \geq \frac{k + 1}{2}$.
   \end{trditev}
-  \pause
+\end{frame}
+
+\begin{frame}{Odgovori}
   \begin{trditev}
-    Za vsak graf $G$ brez trikotnikov velja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$.
+    Za vsak graf $G$ brez trikotnikov na $n$ vozliščih za dovolj velike $n$ velja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ in $\alpha(G) \geq \frac{1}{2 + o(1)}\sqrt{n\log{n}}$. Za vsak dovolj velik $n$ obstaja graf $G$
+    brez trikotnikov na $n$ vozliščih z neodvisnostnim številom $\alpha(G) \leq 9\sqrt{n\log{n}}$ in $\chi(G) \geq \frac{1}{9}\sqrt{\frac{n}{\log{n}}}$.
   \end{trditev}
 \end{frame}
 
 \begin{frame}{Kromatično število grafov z veliko ožino}
+  Posplošimo problem in lastnosti, ki smo jih opazovali pri grafih brez trikotnikov, opazujemo na grafih s poljubno veliko ožino.
   \begin{izrek}[Erdos]
     Za vsaka $k$ in $l$ obstaja graf $G$, da je $\chi(G) \geq k$ in $girth(G) > l$.
   \end{izrek}

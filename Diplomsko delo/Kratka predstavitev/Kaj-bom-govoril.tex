@@ -1,0 +1,62 @@
+\documentclass[t]{article} % [t] pomeni poravnavo na vrh slida
+
+% \usepackage{etex} % vključi ta paket, če ti javi napako, da imaš naloženih preveč paketov.
+
+% standardni paketi
+\usepackage[slovene]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{varwidth}
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{bbold} % alternative blackboard letters (amssymb already provides a set of them)
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{mathpartir} % inference rules
+\usepackage{stmaryrd}
+\usepackage{mathtools} % to typeset equations in the appendix
+\usepackage{xcolor}
+\usepackage[all]{xy}
+
+% paket, ki ga rabimo za risanje
+\usepackage{tikz}
+
+\usepackage{lmodern}                            % to get rid of font warnings
+\renewcommand\textbullet{\ensuremath{\bullet}}  % to get rid of font warnings
+
+\input{macros.tex}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\definecolor{keywordColor}{rgb}{0.0,0.0,0.5} % the color of language keywords
+\definecolor{rulenameColor}{rgb}{0.5,0.5,0.5} % the color of rule names
+
+\newtheorem{definicija}{Definicija}
+\newtheorem{trditev}{Trditev}
+\newtheorem{izrek}{Izrek}
+
+\begin{document}
+
+Dober dan, jaz bom danes govoril o redkejših grafih z velikim kromatičnim številom. Kaj točno mislim z "redkejšimi" grafi in z "velikim"
+kromatičnim številom bom še specificiral.
+
+Najprej se spomnimo definicije kromatičnega števila. Poveš definicijo. Zelo soroden pojem je neodvisnostno število. Poveš definicijo neodvisne
+množice in neodvisnostnega števila.
+
+Tu imamo primer optimalnega barvanja Petersenovega grafa. Tu se jasno vidi, da je množica vozlišč iste barve neodvisna, torej nam vsako pravilno barvanje
+porodi razbitje grafa na neodvisne množice. Kromatično število nam torej pove, kakšno je minimalno število neodvisnih množic, ki jih potrebujemo,
+da graf razbijemo na neodvisne množice.
+
+Na prvem koraku moramo razjasniti, zakaj se sploh ukvarjamo s kromatičnim številom. Rekli smo, da nam barvanje porodi razbitje na neodvisne množice.
+Kromatično število in minimalna barvanja nas zanimajo, torej, ko moramo razbiti graf na čim manj neodvisnih množic. Kako lahko to intepretiramo? Lahko si
+predstavljamo, da je vsaka povezava "problematična". 
+
+\end{document}

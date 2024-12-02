@@ -1,8 +1,8 @@
 \frametitle{Odgovori}
-\begin{trditev}[Mycielski]
-    Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$, kjer z $M(G)$ označimo graf Mycielskega grafa $G$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
+\begin{trditev}
+    Naj bo $T_n$ število grafov brez trikotnikov z vozlišči $\{1, \ldots, n\}$, $S_n$ pa število dvodelnih grafov z vozlišči $\{1, \ldots, n\}$. Tedaj je $T_n = S_n(1 + o(\frac{1}{n}))$.
   \end{trditev}
   \pause
-  \begin{trditev}
-    Naj bo $T_n$ število grafov na $n$ vozliščih brez trikotnikov, $S_n$ pa število dvodelnih grafov na $n$ vozliščih. Tedaj je $T_n = S_n(1 + o(\frac{1}{n}))$.
+  \begin{trditev}[Mycielski]
+    Naj bo $G_3$ cikel dolžine $5$. Naj bo $G_{k+1} = M(G_k)$ za vsak $k \geq 3$, kjer z $M(G)$ označimo graf Mycielskega grafa $G$. Tedaj je $G_k$ brez trikotnikov in $\chi(G_k) = k$ za vsak $k \geq 3$.
   \end{trditev}
