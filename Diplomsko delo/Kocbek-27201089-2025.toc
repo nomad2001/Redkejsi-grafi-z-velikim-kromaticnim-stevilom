@@ -3,14 +3,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1}Uvod}{7}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Grafi brez trikotnikov s poljubno velikim kromatičnim številom}{7}{section.2}%
+\contentsline {section}{\numberline {2}Grafi brez trikotnikov s poljubno velikim kromatičnim številom}{8}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Tuttejeva konstrukcija}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}Tuttova konstrukcija}{8}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2}Konstrukcija Mycielskega}{9}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Zamični grafi}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Zamični grafi}{11}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Ramseyjevi grafi}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Ramseyjevi grafi}{11}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}{10}{section.3}%
+\contentsline {section}{\numberline {3}Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}{12}{section.3}%

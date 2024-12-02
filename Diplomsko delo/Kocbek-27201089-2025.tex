@@ -80,8 +80,8 @@
 \begin{document}
 
 \section{Uvod}
-Grafi ponazarjajo relacije med različnimi objekti. Ena od ključnih lastnosti za razumevanje grafa je, koliko so vozlišča v njem "soodvisna". 
-Kot eno izmed glavnih mer "soodvisnosti" vozlišč lahko vzamemo kromatično število grafa. 
+Grafi ponazarjajo relacije med različnimi objekti. Kromatično število nam pove, kako težko je razbiti graf na množice vozlišč, ki med seboj nimajo nobene povezave.
+Z drugimi besedami, pove nam, kakšno je minimalno število neodvisnih množic, ki jih potrebujemo, da lahko graf razbijemo na neodvisne množice.
 
     \begin{definicija}
         Naj bo $G = (V, E)$ (neusmerjen) graf. Naj bo $K$ poljubna neprazna množica moči $k$. Tedaj preslikavi $c: V \to K$ pravimo 
@@ -89,6 +89,51 @@ Kot eno izmed glavnih mer "soodvisnosti" vozlišč lahko vzamemo kromatično št
         $u$ in $v$ velja, da je $c(u) \neq c(v)$, potem pravimo, da je takšno $k$-barvanje dobro. Kromatično število $G$ je najmanjše
         število $k$, za katerega obstaja dobro $k$-barvanje grafa $G$. Označimo ga z $\chi(G)$.
     \end{definicija}
+
+    \begin{definicija}
+        Naj bo $G = (V, E)$ in $H \subseteq V$. Če nobeni dve vozlišči iz $H$ nista med seboj povezani, pravimo, da je $H$ neodvisna množica. Velikost neodvisne množice
+        z največjo močjo imenujemo neodvisnostno število grafa $G$ in ga označimo z $\alpha(G)$.
+    \end{definicija}
+
+Kromatično in neodvisnostno število povezuje naslednja osnovna neenakost:
+    
+    \begin{trditev}
+        Za vsak graf $G$ na $n$ vozliščih velja $\alpha(G)\chi(G) \geq n$.
+        \label{spodnja_meja}
+    \end{trditev}
+
+    \begin{dokaz}
+        Označimo z $V_i$ množico vozlišč, ki jih neko optimalno dobro barvanje pobarva z $i$-to barvo. Iz definicije dobrega barvanja direktno sledi, da nobeni dve vozlišči
+        iz $V_i$ ne moreta biti povezani, saj sta enako pobarvani. Torej je $V_i$ neodvisna množica. To pa pomeni, da je $|V_i| \leq \alpha(G)$. Torej je 
+        $n = \sum_{i=1}^{\chi(G)}|V_i| \leq \sum_{i=1}^{\chi(G)}\alpha(G) = \chi(G)\alpha(G)$ in je s tem trditev dokazana.
+    \end{dokaz}
+
+Ta trditev je pomembna, saj je to ena od redkih znanih spodnjih mej za kromatično število. Velja tudi naslednja najenostavnejša zgornja meja za kromatično število:
+
+    \begin{trditev}
+        Označimo z $\Delta(G)$ maksimalno stopnjo vseh vozlišč v grafu $G$. Tedaj je $\chi(G) \leq \Delta(G) + 1$
+        \label{zgornja_meja}
+    \end{trditev}
+
+    \begin{dokaz}
+        PREPIŠI, KAKO JE KONVALINKA V KNJIGI ZAPISAL TA DOKAZ S POŽREŠNIM BARVANJEM.
+    \end{dokaz}
+
+Za grafe brez trikotnikov velja naslednja karakterizacija:
+
+    \begin{trditev}
+        Graf $G$ nima trikotnikov natanko tedaj, ko je za vsako vozlišče $v$, njegova množica sosedov $N(v)$ neodvisna množica.
+        \label{karakterizacija}
+    \end{trditev}
+
+    \begin{dokaz}
+        Naj bo $G$ brez trikotnikov. Naj bo $v$ poljubno vozlišče. Denimo, da sta vozlišči $u$ in $w$ iz $N(v)$ povezani. Tedaj $v, u$ in $w$ tvorijo trikotnik, kar je protislovje.
+
+        Naj bo za vsako vozlišče $v$ množica $N(v)$ neodvisna. Denimo, da imamo trikotnik sestavljen iz vozlišč $u, v$ in $w$. Tedaj sta $v, w \in N(u)$, hkrati pa sta $v$ in $w$ povezani,
+        kar je v protislovju z neodvisnostjo $N(u)$. 
+        
+        S tem smo dokazali obe smeri karakterizacije.
+    \end{dokaz}
 
 Tema tega diplomskega dela so grafi, ki imajo veliko ožino tj. velikost najmanjšega cikla. 
 
@@ -110,7 +155,7 @@ TU ALI PA NA KONCU RAZDELKA DODAJ TRDITEV IN DOKAZ, DA SO SKORAJ VSI GRAFI BREZ 
 "Almost all triangle-free graphs are bipartite") IN IMAJO KOT TAKŠNI KROMATIČNO ŠTEVILO 2 IN DA ZATO REZULTATI IZ TEGA RAZDELKA RES NISO 
 OČITNI!!!!!!! DODAJ PRAV TAKO KARAKTERIZACIJO DVODELNIH GRAFOV KOT GRAFOV BREZ LIHIH CIKLOV!!!!!
 
-\subsection{Tuttejeva konstrukcija}
+\subsection{Tuttova konstrukcija}
 Prvi, ki je pokazal, da obstajajo grafi brez trikotnikov, ki imajo poljubno veliko kromatično število, je bil William Thomas Tutte, ki je
 pisal pod psevdonimom Blanche Descartes. Podal je sledečo induktivno konstrukcijo.
 
@@ -123,7 +168,7 @@ vozliščema iz $G_X$ in $G_{X'}$ ne obstaja povezava, če je $X \neq X'$. S tem
 Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
 
     \begin{trditev}
-        Graf $G_k$ iz Tuttejeve konstrukcije ne vsebuje trikotnikov in velja $\chi(G_k) = k$.
+        Graf $G_k$ iz Tuttove konstrukcije ne vsebuje nobenega trikotnika in velja $\chi(G_k) = k$.
     \end{trditev}
     
     \begin{dokaz}
@@ -155,7 +200,7 @@ Pokažimo, da je $\chi(G_k) = k$ in da $G_k$ ne vsebuje trikotnikov.
         $k \geq 3$. DOKAŽI TO!!!!!!!!!
     \end{opomba}
 
-Tuttejeva konstrukcija torej res dokazuje, da lahko imajo grafi brez trikotnikov poljubno veliko kromatično število. Vendar so grafi v Tuttejevi konstrukciji
+Tuttova konstrukcija torej res dokazuje, da lahko imajo grafi brez trikotnikov poljubno veliko kromatično število. Vendar so grafi v Tuttejevi konstrukciji
 izredno veliki (če ima $G_k$ recimo $n$ vozlišč, ima $G_{k+1}$ potem $\binom{k(n-1)+1}{n}n + k(n-1) + 1$ vozlišč) in je v resnici kromatično število zelo majhno 
 v razmerju s številom vozlišč. Iz tega aspekta je bolj zanimiva konstrukcija Mycielskega. Glavna prednost Tuttejeve konstrukcije je ta, da dokazuje, da lahko imajo 
 tudi grafi brez ciklov dolžine manjše ali enake $4$ ali $5$ poljubno velika kromatična števila.
@@ -209,24 +254,84 @@ povezavo $b_ic$ v $M(G)$. Takšnemu grafu $M(G)$ pravimo graf Mycielskega grafa 
 
 Konstrukcija Mycielskega nam torej porodi še eno družino grafov brez trikotnikov, katerih kromatično število neomejeno narašča. Grafi iz te družine so dosti manjši kot grafi iz Tuttejeve konstrukcije,
 in sicer bi z indukcijo lahko enostavno dokazali, da je število vozlišč v $G_k$ enako $3 \cdot 2^{k-2} - 1$ za $k \geq 3$. Torej kromatično število narašča logaritemsko glede na število vozlišč. To je še vedno dosti
-majhno, vendar veliko boljše kot v Tuttejevi konstrukciji.
+majhno, vendar veliko boljše kot v Tuttovi konstrukciji.
 
 \subsection{Zamični grafi}
 
 \subsection{Ramseyjevi grafi}
 Vsi grafi iz prejšnjih podrazdelkov so dejansko imeli precej majhna kromatična števila glede na velikosti grafov. V tem podrazdelku pa bomo obravnavali grafe z dosti večjim kromatičnim številom,
-torej globalno dosti bolj kompleksne grafe.
+torej globalno dosti bolj kompleksne grafe. Poglejmo naslednjo družino grafov.
 
-Graf $G_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
-da $p$ leži na $L$. Vozlišča opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $(p, L) < (p', L')$, da sta $p$ in $p'$ različni ter $L$ in $L'$
-različni in da $p$ leži na $L'$. Tedaj velja, da $G_k$ ne vsebuje trikotnikov in da je $\alpha(G_k) \leq 2 \cdot (k^2 + k + 1)$. Ker ima graf $(k^2 + k + 1)(k + 1)$ vozlišč, je posledično $\chi(G_k) \geq \frac{k + 1}{2}$.
-Če ima $G_k$ $n$ vozlišč, je torej $\chi(G_k) = \Omega(n^{\frac{1}{3}})$, kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
+Graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+da $p$ leži na $L$. Točke v ravnini opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $p$ in $p'$ različni ter $L$ in $L'$
+različni in da $p$ leži na $L'$. Tedaj veljajo naslednje trditve:
+
+    \begin{trditev}
+        $P_k$ ne vsebuje trikotnikov.
+    \end{trditev}
+
+    \begin{dokaz}
+        Dokazujemo s protislovjem. Denimo, da imamo trikotnik $(p, L), (p', L')$ in $(p'', L'')$. Tedaj so vse točke in premice paroma različne. Naj bo brez škode za splošnost $p < p' < p''$. Tedaj po konstrukciji
+        velja, da $p$ leži na $L, L'$ in $L''$, $p'$ pa leži na $L'$ in $L''$. Ker je v projektivni ravnini premica natanko določena z dvema točkama, ki ležita na njej, in ker tako $p$ kot $p'$ ležita na $L'$ in $L''$,
+        je $L' = L''$, kar pa je protislovje. Torej $P_k$ res ne vsebuje trikotnikov.
+    \end{dokaz}
+    
+    \begin{trditev}
+        Velja $\alpha(P_k) \leq 2 \cdot (k^2 + k + 1)$.
+    \end{trditev}
+
+    \begin{dokaz}
+        Naj bo $H \subseteq V(P_k)$ poljubna neodvisna množica vozlišč. Tedaj lahko $H$ zapišemo kot disjunktno unijo dveh množic.
+
+        Prva množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v vsaj dveh urejenih parih iz $H$. Vzemimo dva takšna urejena para, v katerih se točka ponovi, recimo $(p, L)$ in $(p, L')$.
+        Ker je množica $H$ neodvisna, mora za vsako vozlišče $(q, L') \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L)$ in $(q, L')$, kar bi bilo v protislovju z neodvisnostjo $H$. Podobno mora 
+        za vsako vozlišče $(q, L) \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L')$ in $(q, L)$. To pa že pomeni, da je izmed vseh točk, ki se pojavijo v paru z $L$ v množici $H$, točka $p$ maksimalna.
+        Ker je maksimum v linearni urejenosti enolično določen, se bo z vsake premice, ki se pojavi v nekem paru v $H$, kvečjemu ena točka pojavila v več kot enem paru. To pomeni, da bo v prvi množici vozlišč vsaka premica iz
+        projektivne ravnine nastopila v kvečjemu enem paru. Ker je vseh premic v ravnini $k^2 + k + 1$, bo torej vozlišč v prvi množici kvečjemu $k^2 + k + 1$.
+
+        Druga množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v natanko enem urejenem paru iz $H$. Vozlišč v drugi množici bo torej kvečjemu toliko, kolikor je točk v ravnini, teh pa
+        je $k^2 + k + 1$.
+        
+        Množica $H$, ki je unija prve in druge množice, vsebuje torej kvečjemu $2 \cdot (k^2 + k + 1)$ vozlišč. Ker je bila $H$ poljubna neodvisna množica, smo dokazali $\alpha(G) \leq 2 \cdot (k^2 + k + 1)$.
+    \end{dokaz}
+    
+    \begin{trditev}
+        Velja $\chi(P_k) \geq \frac{k + 1}{2}$.
+    \end{trditev}
+
+    \begin{dokaz}
+        V končni projektivni ravnini reda $k$ imamo $k^2 + k + 1$ točk in vsaka točka leži na $k + 1$ premic. Torej ima graf $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč. Če upoštevamo prejšnjo trditev in neenakost \ref{spodnja_meja}, dobimo, da je
+        res $\chi(P_k) \geq \frac{k + 1}{2}$.
+    \end{dokaz}
+    
+Ker ima $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč, nam prejšnje trditve povejo, da je $\chi(P_k) = \Omega(n^{\frac{1}{3}})$, kjer je $n = |V(P_k)|$ kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
 kljub odsotnosti trikotnikov.
 
-To je dejansko zelo blizu največjemu kromatičnemu številu, ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G$ velja namreč meja $\chi(G) \leq 2\sqrt{n} + 1$ (lažji dokaz na
-Mathematics stack exchange). Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
+To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neodvisnostnemu številu, ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G$ velja namreč veljata naslednji meji.
 
-TU JE TREBA ŠE VELIKO DODELATI!!!!!!!!!!!!!
+    \begin{trditev}
+        V grafu $G$ brez trikotnikov na $n$ vozliščih, je $\alpha(G) \geq \lfloor\sqrt{n}\rfloor$.
+    \end{trditev}
+
+    \begin{dokaz}
+        Naj bo $G$ graf brez trikotnikov. Standardno označimo maksimalno stopnjo nekega vozlišča v grafu z $\Delta(G)$. Naj ima $v$ stopnjo $\Delta(G)$. Če je $\Delta(G) \geq \lfloor\sqrt{n}\rfloor$, je po \ref{karakterizacija} množica $N(v)$ neodvisna množica z močjo vsaj 
+        $\lfloor\sqrt{n}\rfloor$, torej je $\alpha(G) \geq \lfloor\sqrt{n}\rfloor$. Če je $\Delta(G) \leq \lfloor\sqrt{n}\rfloor - 1$, pa po \ref{zgornja_meja} obstaja dobro barvanje grafa z $\lfloor\sqrt{n}\rfloor$ barvami. Pri takšnem barvanju moramo vsaj eno barvo uporabiti
+        na $\lfloor\sqrt{n}\rfloor$ vozliščih in ta vozlišča tvorijo neodvisno množico. Torej je spet $\alpha(G) \geq \lfloor\sqrt{n}\rfloor$.
+    \end{dokaz}
+
+    \begin{trditev}
+        V grafu $G$ brez trikotnikov na $n$ vozliščih je $\chi(G) \leq 2\sqrt{n} + 1$
+    \end{trditev}
+
+    \begin{dokaz}
+        Dokazujemo z indukcijo na številu vozlišč. Če je $\Delta(G) \leq \sqrt(n)$, po \ref{zgornja_meja} velja $\chi(G) \leq \sqrt{n} + 1 \leq 2\sqrt{n} + 1$. Če je $\Delta(G) \geq \sqrt{n}$ in je maksimalna stopnja dosežena v $v$, je $H = N(v)$ neodvisna in jo lahko pobarvamo z isto barvo, velja
+        pa da ima $H$ vsaj $\sqrt{n}$ vozlišč. Torej je $G \setminus H$ graf brez trikotnikov na kvečjemu $n - \sqrt{n}$ vozlišč. Po indukcijski predpostavki ga lahko tedaj pobarvamo s kvečjemu $2\sqrt{n - \sqrt{n}} + 1$ barvami. Ker je $\sqrt{n - \sqrt{n}} \leq \sqrt{n} - \frac{1}{2}$,
+        lahko dejansko $G \setminus H$ pobarvamo s kvečjemu $2\sqrt{n}$ barvami. Kot smo že ugotovili, lahko $H$ pobarvamo z isto barvo, torej lahko $G$ pobarvamo s kvečjemu $2\sqrt{n} + 1$ barvami. S tem smo pokazali, da je res $\chi(G) \leq 2\sqrt{n} + 1$.
+    \end{dokaz}
+
+Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
+
+TU JE TREBA ŠE RAZLOŽITI, ZAKAJ JIH IMENUJEMO "RAMSEYJEVI GRAFI"!!!!!!!!!!!!!
 
 \section{Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}
 V prejšnjem razdelku smo pokazali, da odsotnost trikotnikov ne omejuje kromatičnega števila grafa. Prav tako smo poskušali ugotoviti, kako globalno kompleksen je lahko graf, ki nima trikotnikov, torej graf,
