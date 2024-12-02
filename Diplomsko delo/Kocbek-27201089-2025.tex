@@ -325,8 +325,8 @@ To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neo
 
     \begin{dokaz}
         Dokazujemo z indukcijo na številu vozlišč. Če je $\Delta(G) \leq \sqrt(n)$, po \ref{zgornja_meja} velja $\chi(G) \leq \sqrt{n} + 1 \leq 2\sqrt{n} + 1$. Če je $\Delta(G) \geq \sqrt{n}$ in je maksimalna stopnja dosežena v $v$, je $H = N(v)$ neodvisna in jo lahko pobarvamo z isto barvo, velja
-        pa da ima $H$ vsaj $\sqrt{n}$ vozlišč. Torej je $G \setminus H$ graf brez trikotnikov na kvečjemu $n - \sqrt{n}$ vozlišč. Po indukcijski predpostavki ga lahko tedaj pobarvamo s kvečjemu $2\sqrt{n - \sqrt{n}} + 1$ barvami. Ker je $\sqrt{n - \sqrt{n}} \leq \sqrt{n} - \frac{1}{2}$,
-        lahko dejansko $G \setminus H$ pobarvamo s kvečjemu $2\sqrt{n}$ barvami. Kot smo že ugotovili, lahko $H$ pobarvamo z isto barvo, torej lahko $G$ pobarvamo s kvečjemu $2\sqrt{n} + 1$ barvami. S tem smo pokazali, da je res $\chi(G) \leq 2\sqrt{n} + 1$.
+        pa da ima $H$ vsaj $\sqrt{n}$ vozlišč. Torej je $G \setminus H$ graf brez trikotnikov na kvečjemu $n - \sqrt{n}$ vozlišč. Po indukcijski predpostavki ga lahko tedaj pobarvamo s kvečjemu $2\sqrt{n - \sqrt{n}} + 1$ barvami. Ker je $\sqrt{n - \sqrt{n}} \leq \sqrt{n} - \frac{1}{2}$, kar vidimo
+        s kvadriranjem obeh strani neenakosti, lahko dejansko $G \setminus H$ pobarvamo s kvečjemu $2\sqrt{n}$ barvami. Kot smo že ugotovili, lahko $H$ pobarvamo z isto barvo, torej lahko $G$ pobarvamo s kvečjemu $2\sqrt{n} + 1$ barvami. S tem smo pokazali, da je res $\chi(G) \leq 2\sqrt{n} + 1$.
     \end{dokaz}
 
 Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
