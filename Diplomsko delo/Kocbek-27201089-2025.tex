@@ -262,47 +262,101 @@ majhno, vendar veliko boljše kot v Tuttovi konstrukciji.
 Vsi grafi iz prejšnjih podrazdelkov so dejansko imeli precej majhna kromatična števila glede na velikosti grafov. V tem podrazdelku pa bomo obravnavali grafe z dosti večjim kromatičnim številom,
 torej globalno dosti bolj kompleksne grafe. Poglejmo naslednjo družino grafov.
 
-Graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino s $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
-da $p$ leži na $L$. Točke v ravnini opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $p$ in $p'$ različni ter $L$ in $L'$
-različni in da $p$ leži na $L'$. Tedaj veljajo naslednje trditve:
+Imejmo neko naravno število $m$ in geometrijo s točkami $\mathcal{P}$ in premicami $\mathcal{L}$ s poljubno incidenčno relacijo, za katero velja aksiom, da skozi $m-1$ paroma različnih točk poteka natanko ena premica. Naj bo $A$ končna podmnožica $\mathcal{P}$ in
+$B$ končna podmnožica $\mathcal{L}$. Tedaj lahko $A$ uredimo s poljubno linearno urejenostjo $<$. Nato tvorimo graf $\mathcal{G}$ tako, da za vozlišča vzamemo vse urejene pare točk in premic $(p, L), p \in A, L \in B$, za katere velja,
+da $p$ leži na $L$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $L$ in $L'$ različni in da $p$ leži na $L'$. Tedaj veljajo naslednje trditve:
 
     \begin{trditev}
-        $P_k$ ne vsebuje trikotnikov.
+        $\mathcal{G}$ ne vsebuje klike velikosti $m$.
     \end{trditev}
 
     \begin{dokaz}
-        Dokazujemo s protislovjem. Denimo, da imamo trikotnik $(p, L), (p', L')$ in $(p'', L'')$. Tedaj so vse točke in premice paroma različne. Naj bo brez škode za splošnost $p < p' < p''$. Tedaj po konstrukciji
-        velja, da $p$ leži na $L, L'$ in $L''$, $p'$ pa leži na $L'$ in $L''$. Ker je v projektivni ravnini premica natanko določena z dvema točkama, ki ležita na njej, in ker tako $p$ kot $p'$ ležita na $L'$ in $L''$,
-        je $L' = L''$, kar pa je protislovje. Torej $P_k$ res ne vsebuje trikotnikov.
+        Dokazujemo s protislovjem. Denimo, da imamo kliko $(p_1, L_1), (p_2, L_2), \ldots,\\ (p_m, L_m)$. Tedaj so vse točke in premice paroma različne. Naj bo brez škode za splošnost $p_1 < p_2 < \ldots < p_m$. Tedaj po konstrukciji
+        velja, da $p_1, \ldots p_{m-1}$ ležijo na $L_{m-1}$ in $L_m$. Ker imamo geometrijo, v kateri skozi $m-1$ paroma različnih točk poteka natanko ena premica, je $L_{m-1} = L_m$, kar pa je protislovje. Torej $\mathcal{G}$ res ne vsebuje klike velikosti $m$.
     \end{dokaz}
-    
+
     \begin{trditev}
-        Velja $\alpha(P_k) \leq 2 \cdot (k^2 + k + 1)$.
+        Velja $\alpha(\mathcal{G}) \leq |A| + |B|$.
     \end{trditev}
 
     \begin{dokaz}
-        Naj bo $H \subseteq V(P_k)$ poljubna neodvisna množica vozlišč. Tedaj lahko $H$ zapišemo kot disjunktno unijo dveh množic.
+        Naj bo $H \subseteq V(\mathcal{G})$ poljubna neodvisna množica vozlišč. Tedaj lahko $H$ zapišemo kot disjunktno unijo dveh množic.
 
         Prva množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v vsaj dveh urejenih parih iz $H$. Vzemimo dva takšna urejena para, v katerih se točka ponovi, recimo $(p, L)$ in $(p, L')$.
         Ker je množica $H$ neodvisna, mora za vsako vozlišče $(q, L') \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L)$ in $(q, L')$, kar bi bilo v protislovju z neodvisnostjo $H$. Podobno mora 
         za vsako vozlišče $(q, L) \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L')$ in $(q, L)$. To pa že pomeni, da je izmed vseh točk, ki se pojavijo v paru z $L$ v množici $H$, točka $p$ maksimalna.
         Ker je maksimum v linearni urejenosti enolično določen, se bo z vsake premice, ki se pojavi v nekem paru v $H$, kvečjemu ena točka pojavila v več kot enem paru. To pomeni, da bo v prvi množici vozlišč vsaka premica iz
-        projektivne ravnine nastopila v kvečjemu enem paru. Ker je vseh premic v ravnini $k^2 + k + 1$, bo torej vozlišč v prvi množici kvečjemu $k^2 + k + 1$.
+        $B$ nastopila v kvečjemu enem paru. V prvi množici bo torej kvečjemu $|B|$ vozlišč.
 
-        Druga množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v natanko enem urejenem paru iz $H$. Vozlišč v drugi množici bo torej kvečjemu toliko, kolikor je točk v ravnini, teh pa
-        je $k^2 + k + 1$.
+        Druga množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v natanko enem urejenem paru iz $H$. Vozlišč v drugi množici bo torej kvečjemu toliko, kolikor je točk v $A$, torej kvečjemu $|A|$.
         
-        Množica $H$, ki je unija prve in druge množice, vsebuje torej kvečjemu $2 \cdot (k^2 + k + 1)$ vozlišč. Ker je bila $H$ poljubna neodvisna množica, smo dokazali $\alpha(G) \leq 2 \cdot (k^2 + k + 1)$.
+        Množica $H$, ki je unija prve in druge množice, vsebuje torej kvečjemu $|A| + |B|$ vozlišč. Ker je bila $H$ poljubna neodvisna množica, smo dokazali $\alpha(\mathcal{G}) \leq |A| + |B|$.
     \end{dokaz}
-    
+
     \begin{trditev}
-        Velja $\chi(P_k) \geq \frac{k + 1}{2}$.
+        Naj bo $L_A$ množica točk iz $A$, ki leži na $L \in B$. Velja $\chi(\mathcal{G}) \geq \frac{\sum_{L \in B}|L_A|}{|A| + |B|}$.
     \end{trditev}
 
     \begin{dokaz}
-        V končni projektivni ravnini reda $k$ imamo $k^2 + k + 1$ točk in vsaka točka leži na $k + 1$ premic. Torej ima graf $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč. Če upoštevamo prejšnjo trditev in neenakost \ref{spodnja_meja}, dobimo, da je
-        res $\chi(P_k) \geq \frac{k + 1}{2}$.
+        Graf $\mathcal{G}$ ima ravno $\sum_{L \in B}|L_A|$ vozlišč. Če upoštevamo prejšnjo trditev in neenakost \ref{spodnja_meja}, dobimo, da je res $\chi(\mathcal{G}) \geq \frac{\sum_{L \in B}|L_A|}{|A| + |B|}$.
     \end{dokaz}
+
+Poglejmo zdaj poseben primer grafa $\mathcal{G}$. Graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino z $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+da $p$ leži na $L$. Točke v ravnini opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $L$ in $L'$ različni in da $p$ leži na $L'$. 
+Tedaj velja naslednja trditev:
+
+    \begin{trditev}
+        $P_k$ ne vsebuje trikotnikov. Velja $\alpha(P_k) \leq 2 \cdot (k^2 + k + 1)$ in $\chi(P_k) \geq \frac{k + 1}{2}$.
+    \end{trditev}
+
+    \begin{dokaz}
+        $P_k$ je poseben primer grafa $\mathcal{G}$, kjer smo za geometrijo vzeli končno projektivno ravnino reda $k$, za $A$ in $B$ pa smo vzeli vse točke in premice v njej. Tedaj je $m = 3$, saj je v projektivni
+        ravnini premica natanko določena z dvema točkama. Torej $P_k$ po prvi izmed prejšnjih trditev za $\mathcal{G}$ ne vsebuje klike velikosti tri, tj. ne vsebuje trikotnika. Ker imamo v projektivni ravnini reda 
+        $k$ točno $k^2 + k + 1$ točk in enako toliko premic, je $|A| = |B| = k^2 + k + 1$. Od tod sledi po drugi trditvi za $\mathcal{G}$, da je $\alpha(P_k) \leq 2 \cdot (k^2 + k + 1)$ Ker na vsaki premici leži natanko 
+        $k + 1$ točk, za vsak $L \in B$ velja $|L_A| = k + 1$ in tako $\sum_{L \in B}|L_A| = (k + 1)(k^2 + k +1)$. Od tod sledi po tretji trditvi za $\mathcal{G}$, da je $\chi(P_k) \geq \frac{k + 1}{2}$.
+    \end{dokaz}
+
+%Graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino z $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+%da $p$ leži na $L$. Točke v ravnini opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $p$ in $p'$ različni ter $L$ in $L'$
+%različni in da $p$ leži na $L'$. Tedaj velja naslednja trditev:
+
+%    \begin{trditev}
+%        $P_k$ ne vsebuje trikotnikov.
+%    \end{trditev}
+
+%    \begin{dokaz}
+%        Dokazujemo s protislovjem. Denimo, da imamo trikotnik $(p, L), (p', L')$ in $(p'', L'')$. Tedaj so vse točke in premice paroma različne. Naj bo brez škode za splošnost $p < p' < p''$. Tedaj po konstrukciji
+%        velja, da $p$ leži na $L, L'$ in $L''$, $p'$ pa leži na $L'$ in $L''$. Ker je v projektivni ravnini premica natanko določena z dvema točkama, ki ležita na njej, in ker tako $p$ kot $p'$ ležita na $L'$ in $L''$,
+%        je $L' = L''$, kar pa je protislovje. Torej $P_k$ res ne vsebuje trikotnikov.
+%    \end{dokaz}
+    
+%    \begin{trditev}
+%        Velja $\alpha(P_k) \leq 2 \cdot (k^2 + k + 1)$.
+%    \end{trditev}
+
+%    \begin{dokaz}
+%        Naj bo $H \subseteq V(P_k)$ poljubna neodvisna množica vozlišč. Tedaj lahko $H$ zapišemo kot disjunktno unijo dveh množic.
+
+%        Prva množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v vsaj dveh urejenih parih iz $H$. Vzemimo dva takšna urejena para, v katerih se točka ponovi, recimo $(p, L)$ in $(p, L')$.
+%        Ker je množica $H$ neodvisna, mora za vsako vozlišče $(q, L') \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L)$ in $(q, L')$, kar bi bilo v protislovju z neodvisnostjo $H$. Podobno mora 
+%        za vsako vozlišče $(q, L) \in H, q \neq p$ veljati $q < p$, saj bi sicer imeli povezavo med $(p, L')$ in $(q, L)$. To pa že pomeni, da je izmed vseh točk, ki se pojavijo v paru z $L$ v množici $H$, točka $p$ maksimalna.
+%        Ker je maksimum v linearni urejenosti enolično določen, se bo z vsake premice, ki se pojavi v nekem paru v $H$, kvečjemu ena točka pojavila v več kot enem paru. To pomeni, da bo v prvi množici vozlišč vsaka premica iz
+%        projektivne ravnine nastopila v kvečjemu enem paru. Ker je vseh premic v ravnini $k^2 + k + 1$, bo torej vozlišč v prvi množici kvečjemu $k^2 + k + 1$.
+
+%        Druga množica vozlišč vsebuje urejene pare točk in premic iz $H$, za katere velja, da se točka pojavi v natanko enem urejenem paru iz $H$. Vozlišč v drugi množici bo torej kvečjemu toliko, kolikor je točk v ravnini, teh pa
+%        je $k^2 + k + 1$.
+        
+%        Množica $H$, ki je unija prve in druge množice, vsebuje torej kvečjemu $2 \cdot (k^2 + k + 1)$ vozlišč. Ker je bila $H$ poljubna neodvisna množica, smo dokazali $\alpha(G) \leq 2 \cdot (k^2 + k + 1)$.
+%    \end{dokaz}
+    
+%    \begin{trditev}
+%        Velja $\chi(P_k) \geq \frac{k + 1}{2}$.
+%    \end{trditev}
+
+%    \begin{dokaz}
+%        V končni projektivni ravnini reda $k$ imamo $k^2 + k + 1$ točk in vsaka točka leži na $k + 1$ premic. Torej ima graf $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč. Če upoštevamo prejšnjo trditev in neenakost \ref{spodnja_meja}, dobimo, da je
+%        res $\chi(P_k) \geq \frac{k + 1}{2}$.
+%    \end{dokaz}
     
 Ker ima $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč, nam prejšnje trditve povejo, da je $\chi(P_k) = \Omega(n^{\frac{1}{3}})$, kjer je $n = |V(P_k)|$ kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
 kljub odsotnosti trikotnikov.

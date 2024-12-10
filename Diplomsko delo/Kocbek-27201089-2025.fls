@@ -1006,8 +1006,8 @@ INPUT .\Kocbek-27201089-2025.out
 INPUT .\Kocbek-27201089-2025.out
 INPUT Kocbek-27201089-2025.run.xml
 OUTPUT Kocbek-27201089-2025.run.xml
-INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT C:\Users\mkocb\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
