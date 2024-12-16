@@ -1,5 +1,14 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
-[1] Config.pm:314> INFO - Logfile is 'Kocbek-27201089-2025.blg'
-[185] biber-MSWIN64:340> INFO - === 
-[240] Biber.pm:415> INFO - Reading 'Kocbek-27201089-2025.bcf'
-[399] Utils.pm:395> WARN - No data sources defined!
+[0] Config.pm:314> INFO - Logfile is 'Kocbek-27201089-2025.blg'
+[259] biber-MSWIN64:340> INFO - === 
+[359] Biber.pm:415> INFO - Reading 'Kocbek-27201089-2025.bcf'
+[542] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[565] Biber.pm:4340> INFO - Processing section 0
+[587] Biber.pm:4531> INFO - Looking for bibtex format file 'Kocbek-27201089-2025.bib' for section 0
+[685] bibtex.pm:1689> INFO - LaTeX decoding ...
+[713] bibtex.pm:1494> INFO - Found BibTeX data source 'Kocbek-27201089-2025.bib'
+[800] UCollate.pm:68> INFO - Overriding locale 'sl-SI' defaults 'variable = shifted' with 'variable = non-ignorable'
+[800] UCollate.pm:68> INFO - Overriding locale 'sl-SI' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[801] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'sl-SI'
+[857] bbl.pm:654> INFO - Writing 'Kocbek-27201089-2025.bbl' with encoding 'UTF-8'
+[859] bbl.pm:757> INFO - Output to Kocbek-27201089-2025.bbl

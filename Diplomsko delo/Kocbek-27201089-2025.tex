@@ -1,4 +1,5 @@
 \documentclass[mat1, tisk]{fmfdelo}
+\addbibresource{Kocbek-27201089-2025.bib}
 % \documentclass[fin1, tisk]{fmfdelo}
 % Če pobrišete možnost tisk, bodo povezave obarvane,
 % na začetku pa ne bo praznih strani po naslovu, …
@@ -449,9 +450,9 @@ ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G
 
 Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
 
-Prvi članek, ki je predstavil eksplicitno konstrukcijo družine grafov z $n$ vozlišči in neodvisnostnim številom reda $O(n^{\frac{2}{3}})$ je bil \cite{Alon}. Kasneje so konstrukcijo grafov $P_k$ predstavili v \cite{Matrices}. Do danes še vedno ne poznamo konstrukcije družine grafov brez trikotnikov
-z asimptotsko manjšim neodvisnostnim številom. V tem razdelku smo posplošili konstrukcijo Ramseyjevih grafov podano v \cite{Matrices}. V tistem članku so predstavili grafe $P_k$, mi smo pa uvedli še grafe $A_k$, ki predstavljajo novo družino grafov, ki imajo na $n$ vozliščih z neodvisnostnim številom reda $O(n^{\frac{2}{3}})$.
-Prav tako podajajo konstrukcijo za naravna števila $n$, za katera prej konstrukcija ni bila znana, saj tako \cite{Alon} kot tudi \cite{Matrices} predstavljajo konstrukcije za $n$ posebne oblike. Ob tem smo v tem razdelku še pokazali, da lahko za poljuben $n$ najdemo graf $\mathcal{G}$ na $n$ vozliščih
+Prvi članek, ki je predstavil eksplicitno konstrukcijo družine grafov z $n$ vozlišči in neodvisnostnim številom reda $O(n^{\frac{2}{3}})$ je bil \cite{Alon94}. Kasneje so konstrukcijo grafov $P_k$ predstavili v \cite{CodenottiPR00}. Do danes še vedno ne poznamo konstrukcije družine grafov brez trikotnikov
+z asimptotsko manjšim neodvisnostnim številom. V tem razdelku smo posplošili konstrukcijo Ramseyjevih grafov podano v \cite{CodenottiPR00}. V tistem članku so predstavili grafe $P_k$, mi smo pa uvedli še grafe $A_k$, ki predstavljajo novo družino grafov, ki imajo na $n$ vozliščih z neodvisnostnim številom reda $O(n^{\frac{2}{3}})$.
+Prav tako podajajo konstrukcijo za naravna števila $n$, za katera prej konstrukcija ni bila znana, saj tako \cite{Alon94} kot tudi \cite{CodenottiPR00} predstavljajo konstrukcije za $n$ posebne oblike. Ob tem smo v tem razdelku še pokazali, da lahko za poljuben $n$ najdemo graf $\mathcal{G}$ na $n$ vozliščih
 z neodvisnostnim številom reda $O(n^{\frac{2}{3}})$, kar sicer ne podaja eksplicitne konstrukcije, vendar podaja idejo o konstrukciji in nam pove, da obstaja družina grafov $G_n$, kjer je $n$ poljuben, $G_n$ ima $n$ vozlišč, $\alpha(G_n) = \Theta(n^{\frac{2}{3}})$ in $G_n$ imajo posebne lastnosti, ki so podane z 
 njihovo okvirno konstrukcijo.
 
@@ -526,15 +527,5 @@ Naslednja lema je pomembna za dokaz glavnega izreka:
 
 % \section{Zaključek}
 % ...
-\begin{thebibliography}{1}
-\bibitem{Matrices}
-B.~Codenotti, P.~Pudlák in G.~Resta, Some structural properties of low-rank matrices related to computational complexity 
-\emph{Theor. Comput. Sci.}, \textbf{235}  (2000),  89--107.   
-\bibitem{Alon}
-N.~Alon, Explicit Ramsey graphs and orthonormal labelings 
-\emph{Electron. J. Comb.}, \textbf{1}  (1994).
-\bibitem{Survey}
-A.~Scott in P.~Seymour, A survey of $\chi$-boundedness 
-(2020).
-\end{thebibliography} 
+\printbibliography
 \end{document}
