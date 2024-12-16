@@ -340,7 +340,7 @@ $C(n) = \min\{m_{(\mathcal{P}, \mathcal{L})}; (\mathcal{P}, \mathcal{L}) \text{ 
         Ker so bile $\mathcal{P}, \mathcal{L}, A$ in $B$ poljubne, je $C(m) \geq C(n)$ za poljuben $m \geq n$ in je torej zaporedje $C(n)$ res nepadajoče.
     \end{dokaz}
 
-Poglejmo zdaj poseben primer grafa $\mathcal{G}$. Graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino z $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
+Poglejmo zdaj poseben primer grafa $\mathcal{G}$. Če je $k$ potenca nekega praštevila, graf $P_k$ zgradimo tako, da pogledamo končno projektivno ravnino reda $k$, torej projektivno ravnino z $k^2 + k + 1$ točkami. Za vozlišča vzamemo vse urejene pare točk in premic $(p, L)$, za katere velja,
 da $p$ leži na $L$. Točke v ravnini opremimo s poljubno linearno urejenostjo $<$. Vozlišči $(p, L)$ in $(p', L')$ povežemo, če velja, da je $p < p'$, da sta $L$ in $L'$ različni in da $p$ leži na $L'$. 
 Tedaj velja naslednja trditev:
 
@@ -400,16 +400,32 @@ Tedaj velja naslednja trditev:
 Ker ima $P_k$ $(k^2 + k + 1)(k + 1)$ vozlišč, nam prejšnje trditve povejo, da je $\chi(P_k) = \Omega(n^{\frac{1}{3}})$, kjer je $n = |V(P_k)|$ kar je občutno večje kromatično število kot v prejšnjih konstrukcijah in kaže, da je lahko graf globalno res precej kompleksen
 kljub odsotnosti trikotnikov.
 
-Na analogen način bi lahko zgradili graf $A_k$ iz končne afine geometrije reda $k$, torej končne afine geometrije s $k^2$ točkami. Le-ta ima $k^2 + k$ premic in na vsaki premici leži $k$ točk. Torej ima graf $A_k$ natanko $k^2(k + 1)$ vozlišč in na analogen način kot prejšnjo
+Na analogen način bi lahko za potenco poljubnega praštevila $k$ zgradili graf $A_k$ iz končne afine geometrije reda $k$, torej končne afine geometrije s $k^2$ točkami. Le-ta ima $k^2 + k$ premic in na vsaki premici leži $k$ točk. Torej ima graf $A_k$ natanko $k^2(k + 1)$ vozlišč in na analogen način kot prejšnjo
 trditev pokažemo naslednjo trditev:
 
     \begin{trditev}
-        $A_k$ ne vsebuje trikotnikov. Velja $\alpha(A_k) \leq 2 k^2 + k$ in $\chi(P_k) \geq \frac{k(k + 1)}{2k + 1}$.
+        $A_k$ ne vsebuje trikotnikov. Velja $\alpha(A_k) \leq 2 k^2 + k$ in $\chi(A_k) \geq \frac{k(k + 1)}{2k + 1}$.
     \end{trditev}
 
-Tudi za $A_k$ torej velja, da je $\chi(A_k) = \Omega(n^{\frac{1}{3}})$, kjer je $n = |V(A_k)|$.
+Tudi za $A_k$ torej velja, da je $\chi(A_k) = \Omega(n^{\frac{1}{3}})$, kjer je $n = |V(A_k)|$. Prav tako smo s tem pokazali, da je $C(k^3 + k^2) \leq 2k^2 + k$, kjer je $k$ potenca nekega praštevila. Opremljeni s to ugotovitvijo, lahko pokažemo naslednjo trditev:
 
-To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neodvisnostnemu številu, ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G$ velja namreč veljata naslednji meji.
+    \begin{trditev}
+        $C(n) = \Theta(n^{\frac{2}{3}})$.
+    \end{trditev}
+
+    \begin{dokaz}
+        Pokazali smo že, da je $C(n) = \Omega(n^{\frac{2}{3}})$. Moramo torej najti še zgornjo mejo. Z odvajanjem lahko hitro preverimo, da je funkcija $f(k) = \frac{(k+1)^3 + (k+1)^2}{k^3+k^2}$ padajoča na intervalu $[1,\infty)$. Torej bo za naravna števila $k$ veljalo,
+        da je $\frac{(k+1)^3 + (k+1)^2}{k^3+k^2} \leq 6$, kar pomeni, da za poljubno naravno število $n$ obstaja $k$, da je $n \leq k^3 + k^2 \leq 6n$. Prav tako vemo, da po Bertrandovem postulatu obstaja praštevilo $p$, za katero velja $k \leq p \leq 2k$. Ker vemo, da je
+        $C(n)$ nepadajoče zaporedje, velja $C(n) \leq C(p^3 + p^2) \leq 2p^2 + p \leq 8k^2 + 2k \leq 8(k^2 + k) \leq 8\cdot 6\frac{n}{k} = 48\frac{n}{k}$. Ker je $n \leq k^3 + k^2 \leq 2k^3$ in zato $\sqrt[3]{\frac{n}{2}} \leq k$, dobimo $C(n) \leq 48\frac{n}{k} \leq 48\sqrt[3]{2}n^{\frac{2}{3}}$.
+        Torej je res $C(n) = \Theta(n^{\frac{2}{3}})$.
+    \end{dokaz}
+
+Treba je omeniti, da so ocene, ki smo jih izpeljali v predhodnem dokazu zelo slabe. Namreč, že za $k \geq 4$, bo veljalo $\frac{(k+1)^3 + (k+1)^2}{k^3+k^2} \leq 2$, kar je veliko boljša ocena. Prav tako smo pri porazdelitvi praštevil upoštevali samo Bertrandov postulat,
+praštevila pa so dosti bolj gosta od tega, kar nam le-ta zagotovi. Ob tem, nismo sploh upoštevali, da bi lahko namesto $p$ vzeli poljubno potenco praštevila in bi dokaz še vedno veljal, temveč smo gledali samo sama praštevila. Potence praštevil pa so še občutno
+gosteje porazdeljene. Visoke konstante pri oceni bi lahko torej občutno zmanjšali.
+
+Ta trditev nam pove, da lahko dejansko za vsak $n$ najdemo graf $\mathcal{G}$ z $m = 3$ (torej brez trikotnikov) na $n$ vozliščih, da bo veljalo $\alpha(\mathcal{G}) \sim n^{\frac{2}{3}}$ in $\chi(\mathcal{G}) \sim n^{\frac{1}{3}}$. To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neodvisnostnemu številu, 
+ki ga lahko dosežemo v grafu brez trikotnikov. Za vse grafe brez trikotnikov $G$ veljata naslednji meji.
 
     \begin{trditev}
         V grafu $G$ brez trikotnikov na $n$ vozliščih, je $\alpha(G) \geq \lfloor\sqrt{n}\rfloor$.
@@ -432,6 +448,12 @@ To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neo
     \end{dokaz}
 
 Dejansko velja za takšne grafe še strožja meja $\chi(G) \leq (2 + o(1))\sqrt{\frac{n}{\log{n}}}$ (težji dokaz v članku "The $\chi$-Ramsey problem for triangle-free graphs").
+
+Prvi članek, ki je predstavil eksplicitno konstrukcijo družine grafov z $n$ vozlišči in neodvisnostnim številom reda $O(n^{\frac{2}{3}})$ je bil \cite{Alon}. Kasneje so konstrukcijo grafov $P_k$ predstavili v \cite{Matrices}. Do danes še vedno ne poznamo konstrukcije družine grafov brez trikotnikov
+z asimptotsko manjšim neodvisnostnim številom. V tem razdelku smo posplošili konstrukcijo Ramseyjevih grafov podano v \cite{Matrices}. V tistem članku so predstavili grafe $P_k$, mi smo pa uvedli še grafe $A_k$, ki predstavljajo novo družino grafov, ki imajo na $n$ vozliščih z neodvisnostnim številom reda $O(n^{\frac{2}{3}})$.
+Prav tako podajajo konstrukcijo za naravna števila $n$, za katera prej konstrukcija ni bila znana, saj tako \cite{Alon} kot tudi \cite{Matrices} predstavljajo konstrukcije za $n$ posebne oblike. Ob tem smo v tem razdelku še pokazali, da lahko za poljuben $n$ najdemo graf $\mathcal{G}$ na $n$ vozliščih
+z neodvisnostnim številom reda $O(n^{\frac{2}{3}})$, kar sicer ne podaja eksplicitne konstrukcije, vendar podaja idejo o konstrukciji in nam pove, da obstaja družina grafov $G_n$, kjer je $n$ poljuben, $G_n$ ima $n$ vozlišč, $\alpha(G_n) = \Theta(n^{\frac{2}{3}})$ in $G_n$ imajo posebne lastnosti, ki so podane z 
+njihovo okvirno konstrukcijo.
 
 TU JE TREBA ŠE RAZLOŽITI, ZAKAJ JIH IMENUJEMO "RAMSEYJEVI GRAFI"!!!!!!!!!!!!!
 
@@ -504,5 +526,15 @@ Naslednja lema je pomembna za dokaz glavnega izreka:
 
 % \section{Zaključek}
 % ...
-
+\begin{thebibliography}{1}
+\bibitem{Matrices}
+B.~Codenotti, P.~Pudlák in G.~Resta, Some structural properties of low-rank matrices related to computational complexity 
+\emph{Theor. Comput. Sci.}, \textbf{235}  (2000),  89--107.   
+\bibitem{Alon}
+N.~Alon, Explicit Ramsey graphs and orthonormal labelings 
+\emph{Electron. J. Comb.}, \textbf{1}  (1994).
+\bibitem{Survey}
+A.~Scott in P.~Seymour, A survey of $\chi$-boundedness 
+(2020).
+\end{thebibliography} 
 \end{document}

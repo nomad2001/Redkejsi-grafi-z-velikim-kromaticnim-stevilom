@@ -1,5 +1,5 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
-[0] Config.pm:314> INFO - Logfile is 'Kocbek-27201089-2025.blg'
-[293] biber-MSWIN64:340> INFO - === 
-[368] Biber.pm:415> INFO - Reading 'Kocbek-27201089-2025.bcf'
-[577] Utils.pm:395> WARN - No data sources defined!
+[1] Config.pm:314> INFO - Logfile is 'Kocbek-27201089-2025.blg'
+[185] biber-MSWIN64:340> INFO - === 
+[240] Biber.pm:415> INFO - Reading 'Kocbek-27201089-2025.bcf'
+[399] Utils.pm:395> WARN - No data sources defined!
