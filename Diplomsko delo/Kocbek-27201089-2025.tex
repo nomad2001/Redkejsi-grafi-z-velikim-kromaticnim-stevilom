@@ -436,8 +436,9 @@ gosteje porazdeljene. Visoke konstante pri oceni bi lahko torej občutno zmanjš
     \end{trditev}
 
     \begin{dokaz}
-        V konstruktivnem dokazu prejšnje trditve smo pokazali, da je $|V(\mathcal{G})| = \sum_{L \in B}|L_A(\Gamma')| = n$. Prav tako smo tam pokazali, da je $\alpha(\mathcal{G}) = |A| + |B| \leq 48\sqrt[3]{2}n^{\frac{2}{3}} = O(n^{\frac{2}{3}})$. Ker velja $C(n) = \Omega(n^{\frac{2}{3}})$, je tudi $\alpha(\mathcal{G}) = \Omega(n^{\frac{2}{3}})$
-        in zato $\alpha(\mathcal{G}) = \Theta(n^{\frac{2}{3}})$.
+        V konstruktivnem dokazu prejšnje trditve smo za $\Gamma$ vzeli končno afino geometrijo reda $p$, kjer je $p$ praštevilo in velja $n \leq p^3 + p^2$, in nato na opisan način konstruirali $\Gamma'$. To pomeni, da je $q \leq p$ in zato lahko na enak način kot v prejšnjem konstruktivnem dokazu izpeljemo oceno $\alpha(\mathcal{G}) \leq |A| + |B| \leq 48\sqrt[3]{2}n^{\frac{2}{3}} = O(n^{\frac{2}{3}})$. 
+        Ker velja $C(n) = \Omega(n^{\frac{2}{3}})$, je tudi $\alpha(\mathcal{G}) = \Omega(n^{\frac{2}{3}})$ in zato $\alpha(\mathcal{G}) = \Theta(n^{\frac{2}{3}})$. Prav tako na identičen način kot v prejšnjem konstruktivnem dokazu pokažemo, da je $|V(\mathcal{G})| = \sum_{L \in B}|L_A(\Gamma')| = n$. V tem dokazu smo upoštevali, da je $\alpha(\mathcal{G'}) \leq |A'| + |B'|$
+        in $|V(\mathcal{G'})| = \sum_{L \in B'}|L_{A'}(\Gamma'')|$ za poljuben graf $\mathcal{G'}$ porojen z $\Gamma'', A'$ in $B'$.
     \end{dokaz}
 
 Ta trditev nam pove, da lahko dejansko za vsak $n$ konstruiramo graf $\mathcal{G}$ z $m = 3$ (torej brez trikotnikov) na $n$ vozliščih, da bo veljalo $\alpha(\mathcal{G}) \sim n^{\frac{2}{3}}$ in $\chi(\mathcal{G}) \sim n^{\frac{1}{3}}$. To je dejansko zelo blizu največjemu kromatičnemu številu in najmanjšemu neodvisnostnemu številu, 
