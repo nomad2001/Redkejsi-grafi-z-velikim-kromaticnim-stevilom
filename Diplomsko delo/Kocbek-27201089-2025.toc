@@ -13,4 +13,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4}Ramseyjevi grafi}{11}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}{15}{section.3}%
+\contentsline {section}{\numberline {3}Grafi s poljubno veliko ožino in poljubno velikim kromatičnim številom}{16}{section.3}%
